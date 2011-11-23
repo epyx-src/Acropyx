@@ -1,0 +1,25 @@
+<div>
+	<div id="result_flight_name">{{html name}}</div>
+	
+	<div style="top:200px;left:10px;right:10px;height:200px;position:absolute;">
+		<canvas class="epyx_competitor_canvas" style="position:absolute;width:100%;height:100%;">
+    		{{! We test competitor to not throw an exception if it does not exist }}
+			{{if competitor}}
+    			${ JSON.stringify( competitor ) }
+    		{{/if}}
+		</canvas>		
+	</div>
+	
+	{{html __template('_ResultTable',$data)}}
+	
+	<div class="rank" hidden="true">${rank}</div>
+	
+	<script type="text/javascript" > 
+		epyxRenderer.render();
+		epyxPafAnimation.clear();
+		epyxMarkAnimation.start();
+		epyxMarkAnimation.registerOnFinish( function() { 
+			$("div.rank").show( 'fast' );
+		} );
+	</script>
+</div>

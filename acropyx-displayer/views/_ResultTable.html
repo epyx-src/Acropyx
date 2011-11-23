@@ -1,0 +1,27 @@
+<div id="mark_table">
+	<table style="width: 100%">
+		<tbody>
+			{{each(i, mark) marks}}
+			<tr>
+				<td class="tete" style="font-size: 2.5em; font-weight: bold;">${__(mark.kind)}</td>
+				<td class="mark"><canvas class="annim_mark" height="40" width="100">${mark.value}</canvas></td>
+			</tr>
+			{{/each}}
+			<tr>
+				<td class="tete" style="font-size: 2.5em; font-weight: bold; color: #B52">${__(overall.kind)}</td>
+				<td class="mark"><canvas class="annim_mark" height="40" width="100">${overall.value}</canvas></td>
+				{{if (warnings)}}
+				<td class="mark">
+					{{if (warnings == 1)}}
+					<img src=images/yellow_card.png />
+					{{else (warnings == 2)}}
+					<img src=images/yellow_card.png /><img src=images/yellow_card.png />
+					{{else (warnings == 3)}}
+					<img src=images/red_card.png />
+					{{/if}}										
+				</td>
+				{{/if}}			
+			</tr>
+		</tbody>
+	</table>
+</div>

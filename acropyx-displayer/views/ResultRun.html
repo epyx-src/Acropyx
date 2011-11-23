@@ -1,0 +1,14 @@
+<div>
+	<div id="result_flight_name"><span>{{html name}}</span></div>
+	
+	<div id="mark_table_result">
+		<canvas id="epyx_scrolling_table" style="width:100%;position:absolute;">
+			${ JSON.stringify( competitors ) }
+        </canvas>
+	</div>
+	<div style="position:absolute;bottom:0px;height:1px"></div>
+	<script type="text/javascript">
+		epyxPafAnimation.clear();
+		epyxMarkTableScroll.start();
+	</script>
+</div>

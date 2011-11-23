@@ -1,0 +1,234 @@
+h1 {
+	font-size: 60pt;
+	color: gray;
+	font-family: arial;
+}
+
+h2 {
+	font-size: 40pt;
+	color: gray;
+	font-family: arial;
+}
+
+#main {
+	font-size: 30pt;
+	color: gray;
+	font-family: arial;
+	top: 3%;
+	left:3%;
+	right:3%;
+	bottom:3%;
+	position:absolute;
+}
+
+#footer {
+	position: absolute;
+	color: gray;
+	font-family: arial;
+	width: 100%;
+	height: 50px;
+	bottom: 0px;
+	-border: 2px groove #BBB;
+}
+
+#front_div {
+	position: absolute;
+	top: 25%;
+	width: 100%;
+	font-size: 100px;
+	text-align: center;
+}
+
+html {
+	width:100%;
+	height:100%;
+	background: -webkit-gradient(linear, center top, center bottom, from(#FFC),
+		to(#FFFFFF) );
+}
+
+body {
+	position:absolute;
+	//width: 1280px;
+	//height: 768px;
+	width:100%;
+	height:100%;
+	padding: 0;
+	margin: 0;
+}
+
+#body_part {
+	display: table;
+	width: 100%;
+	height: 70%; //
+	border: 1px solid black;
+}
+
+#right_part {
+	width: 30%;
+	display: table-cell;
+}
+
+
+#epyx_banner {
+	position: absolute;
+	bottom: 50px;
+}
+
+#flight_name {
+	text-align: center;
+	vertical-align: middle;
+	position: absolute;
+	left: 10px;
+	right: 10px;
+	top: 10px;
+	height: 70px;
+	text-shadow: 0px 10px 15px #999;
+	font-weight: bold;
+	color: black;
+}
+
+#mark_table {
+	position: absolute;
+	left: 10px;
+	right: 40%;
+	bottom: 10px;
+	font:bold 15pt arial;
+	background:rgba(0,0,0,0.8);
+	padding-right:2%;
+	border-radius: 20px;
+	border:solid 3px black
+}
+
+th {
+	border-radius: 5px;
+	border: 3px solid #777;
+	border-style: ridge;
+	background: -webkit-gradient(linear, center top, center bottom, from(#555),
+		to(#777) );
+	color: white;
+	padding: 5px;
+	padding-right: 20px;
+	padding-left: 20px;
+	border-style: groove;
+	-webkit-box-shadow: 0px 10px 15px #999;
+	font-weight: normal;
+}
+
+table {
+	width: auto;
+	border-spacing: 5px;
+	margin: 10px;
+}
+
+table.result {
+	width: auto;
+	border-spacing: 2px;
+	margin: 0px;
+	position: relative;
+	padding-right: 20px;
+	padding-left: 10px;
+
+}
+
+tr.result {
+	
+}
+
+
+td.tete {
+	font-weight: lighter;
+	text-align: right;
+	border-radius: 5px;
+	border: 3px solid #FFF;
+	background: -webkit-gradient(linear, center top, center bottom, from(#CCC),
+		to(#EEE) );
+	color: black;
+	padding: 5px;
+	padding-right: 20px;
+	padding-left: 20px;
+	border-style: groove;
+	-webkit-box-shadow: 0px 10px 15px #999;
+}
+
+#mark_table_result {
+	position: absolute;
+	left: 10px;
+	right: 10px;
+	top: 175px;
+	bottom: 10px;
+	overflow: hidden;
+	border-top:1px solid gray;
+	border-bottom:1px solid gray;
+	z-index:1;
+}
+
+
+#result_flight_name {
+	vertical-align:middle;
+	z-index:2;
+	font-size:1.5em;
+	position: absolute;
+	top: 10px;
+	left: 0px;
+	right: 0px;
+	height:150px;
+	font-weight: lighter;
+	text-align: center;
+	border-radius: 5px;
+	border: 3px solid #777;
+	border-style: ridge;
+	background: -webkit-gradient(linear, center top, center bottom, from(#333),
+		to(#000) );
+	color: white;
+	padding: 5px;
+	padding-right: 20px;
+	padding-left: 20px;
+	border-style: groove;
+	-webkit-box-shadow: 0px 5px 10px #999;
+	-webkit-transform: rotateZ(0deg);
+}
+
+td {
+	text-align: center;
+}
+
+div.flag {
+	-webkit-box-shadow: 0px 10px 15px #999;
+}
+
+img {
+	vertical-align: middle;
+}
+
+#waiting_div {
+	position:absolute;
+	top:300px;
+	left:10px;
+	right:10px;
+	text-align: center;
+	font:bold 35pt arial,sans-serif;
+	color:#111;
+	text-shadow: rgba(0, 0, 0, 0.5) 5px 5px 10px
+}
+
+div.rank {
+	color: black;
+	font-size: 130px;
+	font-weight: bolder;
+	position: absolute;
+	right: 40px;
+	bottom: 40px;
+	background: #EB9;
+	-webkit-transform: rotateZ(-20deg);
+	border: 15px solid #B52;
+	border-radius: 50px;
+	padding: 20px;
+	-webkit-box-shadow: 0px 10px 15px #999;
+	border-bottom-right-radius: 5px;
+	hidden:true;
+}
+
+img.waiting {
+	
+	-webkit-box-shadow: 10px 15px 20px #000;
+}

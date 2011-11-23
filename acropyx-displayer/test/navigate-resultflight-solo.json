@@ -1,0 +1,28 @@
+{
+"name" : "Vole acrobatique d'élimination",
+"competitor" : {
+       "name" : "Yann Savary",
+       "birthDate" : "Born - 1974",
+       "flyingSince" : "First flight- 1980",
+       "acroSince" : "First acro - 1994",
+       "imageSrc" : "https://secure.gravatar.com/avatar/e9aa494890a1726574baaa4f9cc4aaad",
+       "country" : "ch",
+       "moto" : "Le plus dur ce n'est pas la chute, c'est l'atterissage."
+    },
+ "Xmarkers" : [],
+ "marks" : [
+        {
+            "kind": "mark.technic",
+            "marks" : [8.8]
+        },
+        {
+            "kind": "mark.coregraphy",
+            "marks" : [8.6]
+        },
+        {
+            "kind": "mark.landing",
+            "marks" : [8.4]
+        }
+    ],
+ "global" :8.6
+}

@@ -1,0 +1,13 @@
+{
+		"name" : "Sky Water Show 2011 : Qualification",
+		"competitor" : {
+		       "name" : "Yann Savary",
+		       "birthDate" : "Born - 1974",
+		       "flyingSince" : "Flying since - 1988",
+		       "acroSince" : "Acro since - 1994",
+		       "imageSrc" : "https://secure.gravatar.com/avatar/e9aa494890a1726574baaa4f9cc4aaad",
+		       "country" : "ch",
+		       "moto"   : "Le plus dur ce n'est pas la chute, c'est l'attérissage.",
+		       "ticker" : "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit"
+		    }
+		}

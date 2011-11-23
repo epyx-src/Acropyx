@@ -1,0 +1,62 @@
+{
+
+		"name" : "Vole acrobatique d'élimination",
+		"competitors" : [ 
+		    {
+		        "name" : "Helvetyx",
+		        "country" : "CH",
+		        "mark" : 9.8
+		    },
+		    {
+		        "name" : "Les Biomans",
+		        "country" : "JP",
+		        "mark" : 9.5
+		    },
+		    {
+		        "name" : "Deric team",
+		        "country" : "DE",
+		        "mark" : 9.5
+		    },
+		    {
+		        "name" : "A-Team",
+		        "country" : "US",
+		        "mark" : 8.5
+		    },
+		    {
+		        "name" : "Starsky et Hutch",
+		        "country" : "US",
+		        "mark" : 7.9
+		    }, 
+		    {
+		        "name" : "Chapeau melon et bottes de cuir",
+		        "country" : "GB",
+		        "mark" : 7.7
+		    },
+		    {
+		        "name" : "Les brigades du tigre",
+		        "country" : "FR",
+		        "mark" : 7.7
+		    },
+		    {
+		        "name" : "Club Dorothée",
+		        "country" : "FR",
+		        "mark" : 6.7
+		    },
+		    {
+		        "name" : "Johan et Pirlouit",
+		        "country" : "BE",
+		        "mark" : 6.5
+		    },
+		    {
+		        "name" : "Les danceuses du bolshoi",
+		        "country" : "RU",
+		        "mark" : 6.3
+		    },
+		    {
+		        "name" : "Ricci et poveri",
+		        "country" : "IT",
+		        "mark" : 6.1
+		    }
+		  ]
+		
+}

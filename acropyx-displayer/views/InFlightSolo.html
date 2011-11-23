@@ -1,0 +1,22 @@
+<div>
+	<div id="result_flight_name">{{html name}}</div>
+	
+	<div style="top:33%;left:0px;right:0px;height:35%;position:absolute;">
+		<canvas class="epyx_competitor_canvas" style="position:absolute;width:100%;height:100%;">
+			{{! We test competitor to not throw an exception if it does not exist }}
+			{{if competitor}}
+    			${ JSON.stringify( competitor ) }
+    		{{/if}}
+		</canvas>		
+	</div>
+	<div>
+		<canvas id="epyx_banner" fontSize="50" style="width:100%;height:80px;bottom:20px;left:0px">
+		${ competitor.ticker }
+		</canvas>
+	</div>
+	<script type="text/javascript" >
+		epyxBanner.changed();
+		epyxPafAnimation.clear();
+		epyxRenderer.render();
+	</script>
+</div>

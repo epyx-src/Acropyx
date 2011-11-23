@@ -1,0 +1,57 @@
+
+# General
+.DS_Store
+
+# Eclipse
+.settings/
+.metadata/
+
+# Java
+target/
+classes/
+
+# Displayer project
+lib_managed/
+project/boot/
+project/build/target/
+project/plugins/project/build.properties
+src_managed/
+/lib/
+.scala_dependencies
+
+# Admin project
+stacktrace.log
+
+# Acropyx database
+acropyxDb.*
+
+########################################3
+# Visual Studio projects
+#ignore thumbnails created by windows
+Thumbs.db
+#Ignore files build by Visual Studio
+*.obj
+*.exe
+*.pdb
+*.user
+*.aps
+*.pch
+*.vspscc
+*_i.c
+*_p.c
+*.ncb
+*.suo
+*.tlb
+*.tlh
+*.bak
+*.cache
+*.ilk
+*.log
+[Bb]in
+[Dd]ebug*/
+*.lib
+*.sbr
+obj/
+[Rr]elease*/
+_ReSharper*/
+[Tt]est[Rr]esult*

@@ -1,0 +1,44 @@
+{
+"name" : "Vole acrobatique d'élimination",
+"team" : {
+		        "name" : "Helvetyx",
+		        "flyingSince" : "Flying together since 2001",
+		        "pilots" : [
+		                {
+		                		"name" : "Yann Savary",
+		                		"birthDate" : "Born in 1974",
+		                		"imageSrc" : "https://secure.gravatar.com/avatar/e9aa494890a1726574baaa4f9cc4aaad",
+		                		"country" : "ch",
+		                		"moto" : "Le plus dur ce n'est pas la chute, c'est l'atterissage."
+		                },
+		                {
+		                		"name" : "Stefan Paychère",
+		                		"birthDate" : "Born in 1968",
+		                		"imageSrc" : "https://secure.gravatar.com/avatar/a746546803c544eb7c6869541131a108?s=100",
+		                		"country" : "ch",
+		                		"moto" : "Fait gaffe à l'effet venturi..."
+		                }
+
+		        ]
+	},
+ "Xmarkers" : [],
+ "marks" : [
+        {
+            "kind": "mark.technic",
+            "marks" : [8.8]
+        },
+        {
+            "kind": "mark.coregraphy",
+            "marks" : [8.6]
+        },
+        {
+            "kind": "mark.synchro",
+            "marks" : [8.4]
+        },
+        {
+            "kind": "mark.landing",
+            "marks" : [8.4]
+        }
+    ],
+ "global" :8.6
+}
