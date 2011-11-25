@@ -12,7 +12,7 @@ Projects
 
 	The displayer role is only to show results, "pafs" and other information via a big screen. It's a node.js / jquery web site. You can interact with it from virtually anywhere by REST calls.
 
-    See [README.txt](acropyx_displayer/README.txt)
+    See [README.txt](acropyx-displayer/README.txt)
 
 
 2. acropyx_admin
@@ -21,10 +21,10 @@ Projects
 
 	The admin site allow you to manage competitors, runs. It allows you to send commands to the displayer service.
 
-    See [README.txt](acropyx_admin/README.txt)
+    See [README.txt](acropyx-admin/README.txt)
 
 
 Licensing
 ---------
 
-Please see the file called LICENSE.txt
+Please see the file called [LICENSE.txt](LICENSE.txt)
