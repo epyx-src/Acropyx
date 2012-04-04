@@ -8,16 +8,16 @@ Projects
 
 1. acropyx-displayer
 
-	Contains a Node.js projects for the displayer.
+	Contains a [node.js](http://nodejs.org) projects for the HTML5 displayer.
 
-	The displayer role is only to show results, "pafs" and other information via a big screen. It's a node.js / jquery web site. You can interact with it from virtually anywhere by REST calls.
+	The displayer role is only to show results, "pafs" and other information via a big screen. It's a [node.js](http://nodejs.org) / [jqueury](http://jquery.com) web site. Real-time update use [socket.io](http://socket.io/). You can interact with it from virtually anywhere by REST calls.
 
     See [README.txt](https://github.com/epyx-src/Acropyx/blob/master/acropyx-displayer/README.txt)
 
 
 2. acropyx-admin
 
-	Contains a Grails project for administrating the acropyx.
+	Contains a [Grails](http://grails.org) project for administrating the acropyx.
 
 	The admin site allow you to manage competitors, runs. It allows you to send commands to the displayer service.
 
