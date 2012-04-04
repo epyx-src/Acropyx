@@ -1,22 +1,24 @@
-{   "name"         : "acropyx-displayer"
-  , "version"      : "0.3.0"
-  , "email"        : "info@epyx.ch"
-  , "url"          : "http://www.epyx.ch"
-  , "description"  : "Acropyx displayer"
-  , "main"         : "app.js"
-  , "scripts"      : {
-	  "start" : "app.js"
-  } 
-  , "dependencies" : {
-  	     "socket.io" : ">= 0.7.2"
-  	   , "express"   : ">= 2.3.11" 
-	   , "jqtpl"     : ">= 1.0.5"  
-	   , "yanop"     : ">= 0.1.1"
-	   , "i18n"      : ">= 0.3.0"
-	   , "cluster"   : ">= 0.6.4"
+{
+    "name": "acropyx-displayer",
+    "version": "1.0.0",
+    "contributors": [{
+        "name": "Yann Savary",
+        "email": "yann.savary@epyx.ch"
+    }],
+    "main": "app.js",
+    "scripts": {
+        "start": "app.js"
+    },
+    "engine": "node = 0.6.x",
+    "dependencies": {
+        "express": "2.5.x",
+        "socket.io": "0.9.x",
+        "jqtpl": "1.1.x",
+        "yanop": "0.1.3",
+        "i18n": "0.3.0",
+        "cluster": "0.7.x"
+    },
+    "devDependencies": {
+        "expresso": "*"
     }
-  , "devDependencies": {
-  		"expresso"   : ">= 0.7.7"
-    }
-  , "engine": "node >= 0.4.1"
 }
