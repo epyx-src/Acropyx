@@ -24,7 +24,7 @@ var userOptions = yanop.simple({
 		port : {
 		    type: yanop.string
 		   , short: 'p'
-		   ,  description: 'Server port, default 8181'
+		   ,  description: 'Server port, default 80'
 		   , required: false
 		},
 		bindAddress : {
@@ -55,22 +55,3 @@ var userOptions = yanop.simple({
 
 //----- Start the server
 server.startup(userOptions);
-
-/*
-var http = require('http');
-var httpProxy = require('http-proxy');
-
-var proxyOptions =  {
-	  hostnameOnly: true,
-      router: {
-      'localhost': 'localhost:8181',
-      '127.0.0.1': 'localhost:8181'
-    },
-    forward: {
-      host: 'localhost',
-      port: 8181
-    }
-};
-var proxy = httpProxy.createServer(8181, 'localhost');
-proxy.listen(1234);
-*/

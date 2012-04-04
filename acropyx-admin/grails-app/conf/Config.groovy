@@ -86,7 +86,7 @@ ch.acropyx.dateFormats = ['dd/MM/yyyy HH:mm', 'dd/MM/yyyy']
 ch.acropyx.integerFormat = '#'
 
 // Send json rpc order to localhost
-ch.acropyx.displayerPort = 8080
+ch.acropyx.displayerPort = 80
 ch.acropyx.displayerUrl = 'http://localhost:' + ch.acropyx.displayerPort
 
 environments {

@@ -40,7 +40,7 @@ var __ = i18n.__;
  */
 var startup = function(userOptions, callback) {
 	var options = {
-		port : 8080
+		port : 80
 	  , bindAddress : "0.0.0.0"
 	  , persistent :  false
 	  , name : "default"
