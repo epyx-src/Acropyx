@@ -5,9 +5,13 @@
 follow : https://github.com/joyent/node/wiki/Installation
 Shortcut for MacOS : 
 	brew install node
+
+------------ install npm (node package manager) ------------------
+	
+>curl http://npmjs.org/install.sh | sh	
 	
 ------------ install node-dev ( optional )---------------------
-For auto restarting node when sources have cahnged
+For auto restarting node when sources have changed
 
 follow : https://github.com/fgnass/node-dev
 
