@@ -52,9 +52,9 @@ Open the displayer
 
     > connect to the acropyx server with ssh
         
-        ssh -i Dropbox/EC2/ysavarykey.pem -D1234 ubuntu@acropyx.la-haut.info
+        ssh -i your-amazon-EC2-privatekey.pem -D1234 ubuntu@acropyx.com
         
     > launch jconsole
         
-        jconsole -J-DsocksProxyHost=localhost -J-DsocksProxyPort=1234 service:jmx:rmi:///jndi/rmi://10.48.162.218:8999/jmxrmi         
+        jconsole -J-DsocksProxyHost=localhost -J-DsocksProxyPort=1234 service:jmx:rmi:///jndi/rmi://internal-ip-amazon:8999/jmxrmi         
     
