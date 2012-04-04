@@ -10,7 +10,7 @@ Projects
 
 	Contains a [node.js](http://nodejs.org) projects for the HTML5 displayer.
 
-	The displayer role is only to show results, "pafs" and other information via a big screen. It's a [node.js](http://nodejs.org) / [jqueury](http://jquery.com) web site. Real-time update use [socket.io](http://socket.io/). You can interact with it from virtually anywhere by REST calls.
+	The displayer role is only to show results, "pafs" and other information via a big screen. It's a [node.js](http://nodejs.org) / [jquery](http://jquery.com) web site. Real-time update use [socket.io](http://socket.io/). You can interact with it from virtually anywhere by REST calls.
 
     See [README.txt](https://github.com/epyx-src/Acropyx/blob/master/acropyx-displayer/README.txt)
 
