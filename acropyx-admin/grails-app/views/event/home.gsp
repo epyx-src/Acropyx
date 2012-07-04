@@ -25,6 +25,8 @@
                 // Fix combobox size
                 $(".ui-button-icon-only").css("width", "1.9em");
                 $(".ui-button-text").css("padding", ".1em");
+                
+                //Select Default 
             });
         </script>
     </head>
@@ -40,8 +42,7 @@
 			</sec:ifLoggedIn>
         </div>
         <div class="body">
-        
-	        <h1>Active competitions</h1>
+                <h1>Active competitions</h1>
 	        <g:if test="${flash.competitionMessage}">
                 <div class="errors">${flash.competitionMessage}</div>
             </g:if>
@@ -298,7 +299,7 @@
                             <g:form action="sendCompetitionResultToDisplay">
                                 <g:select name="id"
                                         from="${ch.acropyx.Competition.findAllByStartTimeIsNotNull()}"
-                                        optionKey="id" value="${competition?.id}"
+                                        optionKey="id" value="${activeCompetition?.id}"
                                         noSelection="['': '-- Choose a competition --']" />
                                 <g:submitButton name="Send competition result to display" />
                             </g:form>
@@ -307,16 +308,18 @@
                             <g:form action="sendRunResultToDisplay">
                                 <g:select name="id"
                                         from="${ch.acropyx.Run.findAllByStartTimeIsNotNull()}"
-                                        optionKey="id" value="${run?.id}"
+                                        optionKey="id" value="${activeRun?.id}"
                                         noSelection="['': '-- Choose a run --']" />
                                 <g:submitButton name="Send run result to display" />
                             </g:form>
                         </div>
                         <div>
                             <g:form action="sendFlightToDisplay">
-                                <g:select name="selectFlight"
+                                <g:select name="id"
                                         from="${ch.acropyx.Flight.findAllByStartTimeIsNotNull()}"
-                                        optionKey="id" value="${flight?.id}" noSelection="['': '']" />
+                                        optionKey="id" value="${activeFlight?.id}" noSelection="['': '-- Choose a flight --']" 
+                                        
+                                        />
                                 <g:submitButton name="Send flight to display" />
                             </g:form>
                         </div>

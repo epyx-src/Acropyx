@@ -25,7 +25,7 @@ class Mark {
     Judge judge
 
     MarkDefinition markDefinition
-    int mark
+    float mark
 
     static belongsTo = [flight: Flight]
 
@@ -46,6 +46,7 @@ class Mark {
     }
 
     def String toString() {
-        sprintf('%s=%d', markDefinition, mark)
+        //sprintf('%s=%d', markDefinition, mark)
+        sprintf('%s=%f', markDefinition, mark)
     }
 }

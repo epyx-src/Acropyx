@@ -7,7 +7,7 @@ import ch.acropyx.Pilot
 import ch.acropyx.Role
 import ch.acropyx.Run
 import ch.acropyx.Team
-import ch.acropyx.User
+import ch.acropyx.AcroUser
 import ch.acropyx.UserRole
 
 import org.codehaus.groovy.grails.commons.ConfigurationHolder as CH
@@ -25,11 +25,11 @@ class BootStrap {
 
         String defaultPassword = springSecurityService.encodePassword('123')
         
-        def admin = new User(username: 'admin', enabled: true, password: defaultPassword)
+        def admin = new AcroUser(username: 'admin', enabled: true, password: defaultPassword)
         admin.save(flush: true)
         UserRole.create(admin, adminRole, true)
         
-        def event = new User(username: 'event', enabled: true, password: defaultPassword)
+        def event = new AcroUser(username: 'event', enabled: true, password: defaultPassword)
         event.save(flush: true)
         UserRole.create(event, eventRole, true)
 	}

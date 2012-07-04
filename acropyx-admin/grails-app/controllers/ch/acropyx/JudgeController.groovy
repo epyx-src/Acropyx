@@ -64,7 +64,7 @@ class JudgeController {
         if (cmd.validate()) {
             def judgeInstance = new Judge(params)
             if (judgeInstance.save(flush: true)) {
-                def user = new User(username: cmd.username, enabled: true, password: springSecurityService.encodePassword(cmd.password))
+                def user = new AcroUser(username: cmd.username, enabled: true, password: springSecurityService.encodePassword(cmd.password))
                 user.save(flush: true)
                 UserRole.create(user, Role.findByAuthority("ROLE_JUDGE"), true)
 

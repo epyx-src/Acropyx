@@ -101,8 +101,8 @@ environments {
             domainTenantMap.put("gilles.acropyx.com", 2)
             domainTenantMap.put("claudio.acropyx.com", 3)
             domainTenantMap.put("cs2011.acropyx.com", 4)
-            //domainTenantMap.put("admin.acropyx.com",5)
-            domainTenantMap.put("displayer.acropyx.com",5)
+            domainTenantMap.put("admin.acropyx.com",5)
+            domainTenantMap.put("displayer.acropyx.com",6)
         }
     }
     development {
@@ -113,7 +113,7 @@ environments {
             domainTenantMap = [:]
             //domainTenantMap.put("test1.localhost", 1)
             //domainTenantMap.put("test2.localhost", 2)
-            domainTenantMap.put("displayer.acropyx.com",1)
+            domainTenantMap.put("admin.acropyx.com",1)
             
         }
     }

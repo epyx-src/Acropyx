@@ -104,8 +104,14 @@ var epyxMarkTableScroll = function() {
 		
 		context.restore();
 		var textLineY = y + h - 22;
-		var mark_width = 80;
-		var flag_width = 60;
+		var mark_width = 0;
+		if (row.mark){
+			mark_width = 80
+		}
+		var flag_width = 0;
+		if (row.country){
+			flag_width = 60
+		}
 	
 		//---------- draw number ----------------
 		context.save();
@@ -135,7 +141,8 @@ var epyxMarkTableScroll = function() {
 		my_gradient.addColorStop(0, "rgba(255,255,255,0.8)");
 		my_gradient.addColorStop(1, "rgba(255,255,255,0.0)");
 		context.fillStyle = my_gradient;
-	    var endCompetitorGradientX = w-mark_width-90;
+	    	var endCompetitorGradientX = w-mark_width-90;
+			
 		roundRect(context, x+nb_width+10, y+5, endCompetitorGradientX, 40, 20, true, false);
 		
 		context.fillStyle = "#333";
@@ -153,6 +160,7 @@ var epyxMarkTableScroll = function() {
 			flag.src = getCountryImageSrc(row);
 			flag.onload = function() {
 				var posX = -mark_width-60;
+	
 				context.save();
 				context.shadowOffsetX = 3;
 				context.shadowOffsetY = 3;
@@ -168,6 +176,8 @@ var epyxMarkTableScroll = function() {
 		//------- draw mark ---------------------------
 		context.save();
 		
+		
+		if ( row.mark ) {
 		var fontColor = "white";
 		var glow = undefined;
 		my_gradient = context.createLinearGradient(x, y+5, x, y+h-10);
@@ -214,6 +224,7 @@ var epyxMarkTableScroll = function() {
 		my_gradient.addColorStop(1, "rgba(255,255,255,0.4)");
 		context.fillStyle = my_gradient;
 		roundRect(context,x+w-mark_width-3, y+8, mark_width-6, 15,10,true,false);
+		}
 	}
 
 	function roundRect(ctx, x, y, width, height, radius, fill, stroke) {

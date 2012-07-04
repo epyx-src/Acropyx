@@ -7,6 +7,7 @@ class UrlMappings {
 			}
 		}
 
+
         "/admin" {
             controller = "competition"
             action = "index"
@@ -14,9 +15,10 @@ class UrlMappings {
 
         "/" {
             controller = "event"
+            //controller = "login"
             action = "home"
+            //action = "auth"
         }
-
-		"500"(view:'/error')
-	}
+}
+	
 }

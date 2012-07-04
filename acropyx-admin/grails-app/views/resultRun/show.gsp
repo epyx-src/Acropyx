@@ -2,13 +2,18 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <meta name="layout" content="main_event" />
+        <export:resource />
         <title>Home</title>
+     
     </head>
     <body>
         <div class="nav">
             <span class="menuButton"><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></span>
             <span class="menuButton"><a class="admin" href="${createLink(uri: '/admin')}"><g:message code="default.admin.label"/></a></span>
             <span class="menuButton"><g:link class="list" controller="run" action="export" id="${runInstance.id}">Export</g:link></span>
+            <span class="menuButton"><g:link class="list" controller="run" action="export_pdf" id="${runInstance.id}">Export PDF</g:link></span>
+            <export:formats formats="['pdf']" controller="run" action="export_pdf" params=["id":"${runInstance.id}"] />
+            
             <sec:ifNotLoggedIn>
                 <span class="menuLogin"><a class="login" href="${createLink(uri: '/login')}"><g:message code="default.login.label"/></a></span>
             </sec:ifNotLoggedIn>

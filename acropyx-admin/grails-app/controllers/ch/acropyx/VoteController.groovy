@@ -26,12 +26,22 @@ class VoteController {
             }
 
             session["originReferer"] = request.getHeader("Referer")
+            def posibleMarks = new ArrayList()
+            def i = 0; // TODO: Define configurable value
+            while ( i < 21 ) // TODO: Define configurable value for initial(now 0) and step (now .5)
+            {                      
+                
+                posibleMarks.add(i/2)
+                i = i + 1
+            }
+            
             def markCoefficients = flightInstance.run.competition.markCoefficients
             def judges = flightInstance.run.competition.judges
 
             def model = [flightInstance: flightInstance,
                         judges: judges,
-                        markCoefficients: markCoefficients]
+                        markCoefficients: markCoefficients,
+                        posibleMarks: posibleMarks]
 
             judges.each() { judge ->
                 markCoefficients.each() { markCoefficient ->
@@ -61,7 +71,7 @@ class VoteController {
 
                 def mark = Mark.searchMark(flightInstance, judge, markDefinition)
                 if (mark) {
-                    mark.mark = param.value as Integer
+                    mark.mark = param.value as float
                 } else {
                     mark = new Mark(flight: flightInstance, judge: judge, markDefinition: markDefinition, mark: param.value)
                 }

@@ -17,12 +17,14 @@
 package ch.acropyx
 
 import grails.plugins.springsecurity.Secured
-
 import org.grails.plugins.csv.CSVWriter
+
 
 class RunController {
 
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
+    
+    def exportService
 
     def index = {
         redirect(action: "list", params: params)
@@ -155,5 +157,78 @@ class RunController {
         response.setContentType("text/csv")
         response.setHeader("Content-disposition", "filename=${runInstance}.csv")
         response.outputStream << sw
+    }
+    
+     def export_pdf = {
+        def runInstance = Run.get(params.id)
+        def flights = runInstance.findEndedFlights(true)
+        def labels = [:]
+        def fields = []
+         
+               
+        response.setContentType("application/pdf") //config.grails.mime.types[pdf]
+        response.setHeader("Content-disposition", "filename= test.pdf")
+
+       
+        
+               
+        def resultList = []
+
+        def maxLocationIndex=0;
+
+        flights.eachWithIndex { flight, i ->
+            def expanded_record = ["rank": i+1]
+            if (!fields.contains("rank")){
+                fields.add("rank")
+                labels["rank"] = "Rank"
+            }
+            expanded_record["competitor"] =  flight.competitor.name
+            if (!fields.contains("competitor")){
+                fields.add("competitor")
+                labels["competitor"] = "Competitor"
+            }
+            def detailedResults = flight.computeDetailedResults()
+            runInstance.competition.markCoefficients.eachWithIndex { markCoefficient, y ->
+                def markName = markCoefficient.markDefinition.name
+                expanded_record["${markName}"] = detailedResults.get(markCoefficient.id)
+                if (!fields.contains("${markName}")){
+                    fields.add("${markName}")
+                    labels["${markName}"] = "${markName}"
+                }   
+                
+            }
+            resultList.add(expanded_record)
+        }
+
+
+        
+        
+
+        exportService.export("pdf", response.outputStream, resultList, fields, labels, [:], [:]) 
+        
+        
+        
+        
+        
+        
+        
+        //List fields = ["Rank", "Competitor", "Technical expression", "Choreography", "Landing", "Result"]
+        //def labels = ["Rank":"Rank", "Competitor":"Competitor", "Technical expression" :"Technical Expression" , "Choreography": "Choreography", "Landing":"Landing", "Result": "Result"]
+        
+        
+
+        //flights.eachWithIndex { flight, i ->
+        //    values.put('rank', i+1)
+        //    values.put('competitor', flight.competitor.name)
+
+        //    def detailedResults = flight.computeDetailedResults()
+        //    runInstance.competition.markCoefficients.each { markCoefficient ->
+        //        values.put(markCoefficient.markDefinition.name, detailedResults.get(markCoefficient.id))
+              //  fields.add(markCoefficient.markDefinition.name)
+        //    }
+        //}
+        
+        
+        //exportService.export("pdf", response.outputStream, values, fields, labels, [:], [:])        
     }
 }

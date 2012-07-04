@@ -26,7 +26,7 @@ class FlightManoeuvreController {
             }
 
             session["originReferer"] = request.getHeader("Referer")
-            def model = [flightInstance: flightInstance, manoeuvres: Manoeuvre.list()]
+            def model = [flightInstance: flightInstance, manoeuvres: Manoeuvre.listOrderByName()]
 
             def flightManoeuvres = [];
             flightInstance.manoeuvres?.each() { flightManoeuvre ->

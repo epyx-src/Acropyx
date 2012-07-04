@@ -47,7 +47,30 @@ class DisplayerService {
                 body : '{ "name" : "' + name + '", "text" : "' + text + '" }',
                 requestContentType : ContentType.JSON,
                 headers : ["Tenant": tenant] )
+            
+      //  sleep(30000)
+      //  competitionStartingOrder(tenant, competition)
     }
+    
+    def void runStartingOrder(String tenant, Run run){
+        if (run) {
+            def msgKey = (run.endTime ? 'displayer.result.final.text' : 'displayer.result.intermediate.text')
+            def subTitle = messageSource.getMessage( 'displayer.run_start.order', []as Object[], Locale.default )
+            Object[] args = [
+                run.competition.name,
+                run.name,
+                subTitle
+            ]
+            def name = messageSource.getMessage( 'displayer.run_end.title', args, Locale.default )
+            def json = '{ "name" : "' + name + '", "competitors" : ' + generateRunStartingOrder(run) + '}'
+            def resp = restClient.post( path : 'startOrderRun',
+                    body : json,
+                    requestContentType : ContentType.JSON,
+                    headers : ["Tenant": tenant] )
+        }
+    }
+
+    
 
     def void competitionHasEnded(String tenant, Competition competition) {
         resultCompetition(tenant, competition)
@@ -64,6 +87,9 @@ class DisplayerService {
                 body : '{ "name" : "' + name + '", "text" : "' + text + '" }',
                 requestContentType : ContentType.JSON,
                 headers : ["Tenant": tenant] )
+        
+        sleep(30000)
+        runStartingOrder(tenant, run)
     }
 
     def void runHasEnded(String tenant, Run run) {
@@ -103,6 +129,11 @@ class DisplayerService {
                 body : json,
                 requestContentType : ContentType.JSON,
                 headers : ["Tenant": tenant] )
+        //TODO: Define sleep time in config file
+        sleep(7000)
+        resultRun(tenant, flight.run)
+        sleep(7000)
+        resultCompetition(tenant, flight.run.competition)
     }
 
     def void resultRun(String tenant, Run run) {
@@ -149,6 +180,24 @@ class DisplayerService {
     def void clearPaf(String tenant) {
         def resp = restClient.post( path : 'pafclean',
                 headers : ["Tenant": tenant] )
+    }
+    
+    
+    def String generateRunStartingOrder(Run run){
+        def String json = '['
+        def competitors = Competitor.competitorsForActiveRun()
+        
+        competitors.eachWithIndex() { competitor, i ->
+            json += '{ "name" :  "' + competitor.name +'"'
+            if ( competitor instanceof Pilot ) {
+                json += ', "country" : "' + competitor.toCountryISO3166_1() + '"'
+            }
+            json += '}'
+            if (i < competitors.size() -1) {
+                json += ','
+            }
+        }
+        json += ']'          
     }
 
     def String generateRunResult(Run run) {

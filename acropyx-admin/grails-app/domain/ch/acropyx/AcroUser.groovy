@@ -14,15 +14,25 @@
  * You should have received a copy of the GNU Affero General Public License along
  * with this program.  If not, see <http://www.gnu.org/licenses/>.
  *******************************************************************************/
-class IndexController {
-    /*
-     To activate this controller, add these lines in the UrlMappings.groovy config file:
-     "/" {
-     controller = "index"
-     }
-     */
-    def index = {
-        redirect( controller:'event', action:'home', params: params )
-        //redirect( controller:'event', action:'home', params: params )
+package ch.acropyx
+
+class AcroUser {
+
+    String username
+    String password
+    boolean enabled
+    boolean accountExpired
+    boolean accountLocked
+    boolean passwordExpired
+
+    static constraints = {
+        username blank: false, unique: true
+        password blank: false
+    }
+
+    static mapping = { password column: '`password`' }
+
+    Set<Role> getAuthorities() {
+        UserRole.findAllByUser(this).collect { it.role } as Set
     }
 }

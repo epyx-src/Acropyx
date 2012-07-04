@@ -1,8 +1,23 @@
+
 dataSource {
-    pooled = true
-    driverClassName = "org.hsqldb.jdbcDriver"
-    username = "sa"
-    password = ""
+    //pooled = true
+    //driverClassName = "org.hsqldb.jdbcDriver"
+    //username = "sa"
+    //password = ""
+    //Aqui comienza mysql
+    //pooled = true
+    //driverClassName = "com.mysql.jdbc.Driver"
+    //username = "root"
+    //password = "pzl104wilga"
+    //hasta aqui es con mysql
+    //Aqui comienza postgresql
+        pooled = true
+        driverClassName = "org.postgresql.Driver"
+        dialect = org.hibernate.dialect.PostgreSQLDialect
+	username = "acropyx"
+	password = "Acropyx.2O12"
+        //Hasta aqui es con postgresql    
+    
 }
 hibernate {
     cache.use_second_level_cache = true
@@ -14,19 +29,28 @@ environments {
     development {
         dataSource {
             dbCreate = "update"
-            url = "jdbc:hsqldb:file:acropyxDb;shutdown=true"
+            //url = "jdbc:hsqldb:file:acropyxDb;shutdown=true"
+            //url = "jdbc:mysql://localhost:3306/racetrack_dev?autoreconnect=true"
+            //url = "jdbc:mysql://localhost:3306/acropyxDb"
+            url = "jdbc:postgresql://localhost:5432/acropyxDb"
         }
     }
     test {
         dataSource {
             dbCreate = "update"
-            url = "jdbc:hsqldb:mem:testDb"
+            //url = "jdbc:hsqldb:mem:testDb"
+            //url = "jdbc:mysql://localhost:3306/racetrack_dev?autoreconnect=true"
+            //url = "jdbc:mysql://localhost:3306/acropyxDb"
+            url = "jdbc:postgresql://localhost:5432/acropyxDb"
         }
     }
     production {
         dataSource {
             dbCreate = "update"
-            url = "jdbc:hsqldb:file:acropyxDb;shutdown=true"
+            //url = "jdbc:hsqldb:file:acropyxDb;shutdown=true"
+            //url = "jdbc:mysql://localhost:3306/racetrack_dev?autoreconnect=true"
+            //url = "jdbc:mysql://localhost:3306/acropyxDb"
+            url = "jdbc:postgresql://localhost:5432/acropyxDb"
         }
     }
 }

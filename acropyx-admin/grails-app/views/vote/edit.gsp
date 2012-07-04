@@ -8,6 +8,11 @@
             window.onload = function() {
                 $(".note")[0].focus();
             }
+            /* Yo */
+            function GetPosibleMarks()
+            {
+              
+            }
         </script>
     </head>
     <body>
@@ -41,7 +46,7 @@
                             <tr>
                                 <td>${markCoefficient}</td>
                                 <g:each in="${judges}" var="judge">
-	                                <td><g:select class="note" name="Mark_${judge.id}_${markCoefficient.markDefinition.id}" from="${1..10}" value="${this.('Mark_' + judge.id + '_' + markCoefficient.markDefinition.id)}" /></td>
+	                                <td><g:select class="note" name="Mark_${judge.id}_${markCoefficient.markDefinition.id}" from="${posibleMarks}" value="${this.('Mark_' + judge.id + '_' + markCoefficient.markDefinition.id)}" /></td>
 	                            </g:each>    
                             </tr>    
                         </g:each>  

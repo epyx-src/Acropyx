@@ -25,9 +25,35 @@ class EventController {
     def displayerService
 
     def fetchEventModel() {
-        [competitionInstanceList: Competition.findAllByStartTimeIsNotNullAndEndTimeIsNull(),
-                    runInstanceList: Run.findAllByStartTimeIsNotNullAndEndTimeIsNull(),
-                    flightInstanceList: Flight.findAllByStartTimeIsNotNullAndEndTimeIsNull()]
+        
+        def activeCompetitions =  Competition.findAllByStartTimeIsNotNullAndEndTimeIsNull()
+        def activeRuns = Run.findAllByStartTimeIsNotNullAndEndTimeIsNull()
+        def activeFlights = Flight.findAllByStartTimeIsNotNullAndEndTimeIsNull()
+        
+        def activeCompetition = null
+
+        if (activeCompetitions?.size() > 0)
+        {
+            activeCompetition = activeCompetitions[0]
+        }
+        
+        def activeRun = null
+        if (activeRuns?.size() > 0){
+          activeRun = activeRuns[0]
+       //   activeCompetition = activeRun.competition
+        }
+        
+        def activeFlight = null
+        if (activeFlights?.size() > 0){
+          activeFlight = activeFlights[0];
+        } 
+        
+        [competitionInstanceList: activeCompetitions,
+                    runInstanceList: activeRuns,
+                    flightInstanceList: activeFlights,
+                    activeCompetition: activeCompetition,
+                    activeRun: activeRun,
+                    activeFlight: activeFlight]
     }
 
     def index = {
