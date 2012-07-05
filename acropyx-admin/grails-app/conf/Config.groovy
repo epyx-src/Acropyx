@@ -86,8 +86,8 @@ ch.acropyx.dateFormats = ['dd/MM/yyyy HH:mm', 'dd/MM/yyyy']
 ch.acropyx.integerFormat = '#'
 
 // Send json rpc order to localhost
-//ch.acropyx.displayerPort = 80
-ch.acropyx.displayerPort = 3000
+ch.acropyx.displayerPort = 80
+//ch.acropyx.displayerPort = 3000
 ch.acropyx.displayerUrl = 'http://localhost:' + ch.acropyx.displayerPort
 //ch.acropyx.displayerUrl = 'http://displayer.acropyx.com:' + ch.acropyx.displayerPort
 environments {
@@ -102,7 +102,7 @@ environments {
             domainTenantMap.put("claudio.acropyx.com", 3)
             domainTenantMap.put("cs2011.acropyx.com", 4)
             //domainTenantMap.put("admin.acropyx.com",5)
-            domainTenantMap.put("displayer.acropyx.com",5)
+            //domainTenantMap.put("displayer.acropyx.com",5)
         }
     }
     development {
@@ -111,9 +111,9 @@ environments {
             resolver.type = "request"
             resolver.request.dns.type = "config"
             domainTenantMap = [:]
-            //domainTenantMap.put("test1.localhost", 1)
-            //domainTenantMap.put("test2.localhost", 2)
-            domainTenantMap.put("displayer.acropyx.com",1)
+            domainTenantMap.put("test1.localhost", 1)
+            domainTenantMap.put("test2.localhost", 2)
+            //domainTenantMap.put("displayer.acropyx.com",1)
             
         }
     }
