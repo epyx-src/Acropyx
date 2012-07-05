@@ -7,8 +7,6 @@ dataSource {
     //Aqui comienza mysql
     //pooled = true
     //driverClassName = "com.mysql.jdbc.Driver"
-    //username = "root"
-    //password = "pzl104wilga"
     //hasta aqui es con mysql
     //Aqui comienza postgresql
         pooled = true
