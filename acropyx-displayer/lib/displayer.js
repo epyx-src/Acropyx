@@ -40,9 +40,9 @@ var __ = i18n.__;
  */
 var startup = function(userOptions, callback) {
 	var options = {
-                //port : 80
-		port : 3000
-	  , bindAddress : "10.0.0.201"
+                port : 80
+		//port : 3000
+	  , bindAddress : "localhost"
 	  , persistent :  false
 	  , name : "default"
 	};
