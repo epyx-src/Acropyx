@@ -12,8 +12,8 @@
             <img src="${resource(dir:'images',file:'spinner.gif')}" alt="${message(code:'spinner.alt',default:'Loading...')}" />
         </div>
         <div id="header">
-			<img style="position:absolute;left:5px;top:5px;padding:5px;height:50px" src="${resource(dir:'images',file:'swiss-acro-league.png')}"></img>
-			<img style="position:absolute;right:5px;top:5px;padding:5px;height:50px;" src="${resource(dir:'images',file:'epyx_logo_100.png')}"></img>
+			<img style="position:absolute;left:5px;top:5px;padding:5px;height:50px" src="${resource(dir:'images',file:'fai_logo_cmyk.png')}"></img>
+			<img style="position:absolute;right:5px;top:5px;padding:5px;height:50px;" src="${resource(dir:'images',file:'acropyx_logo_100.png')}"></img>
         </div>
         <div id="containerAdmin">
 	        <div id="center" class="column">
