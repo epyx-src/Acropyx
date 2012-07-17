@@ -226,7 +226,7 @@
 	                   
                             <td>
                                 <g:form controller="flightManoeuvre" action="edit" id="${flightInstance.id}">
-                                    <g:submitButton name="Manoeuvres" />
+                                    <g:submitButton name="Maneuvers" />
                                 </g:form>
                                 <g:form controller="vote" action="edit" id="${flightInstance.id}">
                                     <g:submitButton name="Vote" />
