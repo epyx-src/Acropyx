@@ -140,7 +140,7 @@ class Pilot extends Competitor {
     }
 
     def String toJSON() {
-        '{' + '"name" : "' + name + '",' + '"country" : "' + toCountryISO3166_1()  + '"' + addAge() + addImageSrc() + addFlyingSince() + addGlider() + addTicker() + '}'
+        '{' + '"name" : "' + name + '",' + '"country" : "' + toCountryISO3166_1()  + '"' + addAge() + addImageSrc() + addFlyingSince() + addGlider() + addSponsor() + addTicker() + '}'
     }
     def String addImageSrc() {
         def result = ''
@@ -175,6 +175,18 @@ class Pilot extends Competitor {
         }
         result
     }
+        def String addSponsor() {
+        def result = ''
+        if ( sponsor ) {
+            Object[] args = [
+                sponsor
+            ]
+            result = ',"sponsor" : "' + messageSource.getMessage( 'displayer.pilot.sponsor', args, Locale.default ) + '"'
+        }
+        result
+    }
+
+    
     def String addTicker() {
         def result = ',"ticker" : "'
         if ( job || glider || sponsor || bestResult || flyingSinceYear ) {

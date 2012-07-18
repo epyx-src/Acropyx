@@ -164,7 +164,7 @@ class EventController {
                 def flight = new Flight(competitor:competitorInstance, run:activeRun)
                 flight.start()
                 if (flight.save()) {
-                    displayerService.flightHasStarted(getTenantName(), flight)
+                 //   displayerService.flightHasStarted(getTenantName(), flight)
                 } else {
                     def model = fetchEventModel();
                     model.put('newFlight', flight)
@@ -173,6 +173,25 @@ class EventController {
             } catch (Exception e) {
                 flash.flightMessage = e.getLocalizedMessage()
             }
+        }
+        redirect(action: "home")
+    }
+    
+    @Secured(['ROLE_EVENT', 'ROLE_ADMIN'])
+    def displayFlight = {
+        
+        def flightInstance = Flight.get(params.id)
+        if (flightInstance == null) {
+            flash.flightMessage = "Please choose a flight"
+        }
+        else {
+            try {
+      
+                    displayerService.flightHasStarted(getTenantName(), flightInstance)
+                }
+             catch (Exception e) {
+                    flash.flightMessage = e.getLocalizedMessage()
+             }
         }
         redirect(action: "home")
     }
@@ -188,10 +207,11 @@ class EventController {
                 if ((flightInstance.marks?.size() > 0) && (flightInstance.manoeuvres?.size() > 0)) {
                     flightInstance.end()
                     displayerService.flightHasEnded(getTenantName(), flightInstance)
+                    displayerService.
                     return redirect(controller: "resultRun", id:flightInstance.run.id)
                 }
                 else {
-                    flash.flightMessage = "Please enter manoeuvres and vote before ending the flight"
+                    flash.flightMessage = "Please enter maneuvers and vote before ending the flight"
                 }
             } catch (Exception e) {
                 flash.flightMessage = e.getLocalizedMessage()
@@ -292,7 +312,7 @@ class EventController {
 
     @Secured(['ROLE_EVENT', 'ROLE_ADMIN'])
     def sendFlightToDisplay = {
-        def flight = Flight.get(params.selectFlight)
+        def flight = Flight.get(params.id)
         if (flight) {
             if (flight.isActive()) {
                 displayerService.flightHasStarted(getTenantName(), flight)

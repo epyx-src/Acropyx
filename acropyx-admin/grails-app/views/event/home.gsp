@@ -225,6 +225,9 @@
 	                       <td><g:formatDate format="${grailsApplication.config.ch.acropyx.dateFormat}" date="${flightInstance.startTime}" /></td>
 	                   
                             <td>
+                                <g:form  action="displayFlight" id="${flightInstance.id}">
+                                    <g:submitButton name="Display" />
+                                </g:form>
                                 <g:form controller="flightManoeuvre" action="edit" id="${flightInstance.id}">
                                     <g:submitButton name="Maneuvers" />
                                 </g:form>
@@ -245,7 +248,7 @@
 	                                    <g:submitButton name="End" />
 	                                </g:form>
                                     <g:form action="deleteFlight" id="${flightInstance.id}">
-                                        <g:submitButton name="Delete" onclick="return confirm('Delete the flight with its maoeuvres and marks ?')" />
+                                        <g:submitButton name="Delete" onclick="return confirm('Delete the flight with its maneuvers and marks ?')" />
                                     </g:form>  	                                
                                 </td>      
                             </g:else>                          

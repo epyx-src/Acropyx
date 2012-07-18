@@ -1,5 +1,6 @@
 if ( epyxRenderer ) {
 	epyxRenderer.registerRenderer("epyx_competitor_canvas", function(context,w,h,data) {
+                    
 		var x = 0;
 		var y = 0;
 		
@@ -84,9 +85,10 @@ if ( epyxRenderer ) {
 		        var nx = x;
 		        var ny = y+ ( headSize * 2.3 );
 		        nx = displayBoxInfo(nx+10,ny, data.birthDate,maxX);
-		        nx = displayBoxInfo(nx+10,ny, data.glider,maxX);
-		        nx = displayBoxInfo(nx+10,ny, data.flyingSince,maxX);
-		        nx = displayBoxInfo(nx+10,ny, data.acroSince,maxX);
+		        nx = displayBoxInfo(nx+10,ny, data.glider,maxX);	
+                        nx = displayBoxInfo(x+10,ny+(headSize*1.2),data.sponsor,maxX);
+		        //nx = displayBoxInfo(nx+10,ny, data.flyingSince,maxX);
+		        //nx = displayBoxInfo(nx+10,ny, data.acroSince,maxX);
 			};
 			// meanwhile
 		}

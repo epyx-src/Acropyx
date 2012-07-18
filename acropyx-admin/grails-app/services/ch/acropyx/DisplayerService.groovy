@@ -129,11 +129,6 @@ class DisplayerService {
                 body : json,
                 requestContentType : ContentType.JSON,
                 headers : ["Tenant": tenant] )
-        //TODO: Define sleep time in config file
-        sleep(7000)
-        resultRun(tenant, flight.run)
-        sleep(7000)
-        resultCompetition(tenant, flight.run.competition)
     }
 
     def void resultRun(String tenant, Run run) {

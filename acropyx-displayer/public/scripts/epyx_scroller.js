@@ -7,7 +7,7 @@ var epyxBanner = function() {
 	var textWidth;
 	var spaceWidth = 0;
 	var fontString;
-	var speed = 30;
+	var speed = 10;
 	var posY;
 	
 
