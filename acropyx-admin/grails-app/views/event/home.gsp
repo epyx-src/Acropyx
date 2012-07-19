@@ -236,7 +236,10 @@
                                 </g:form>
                                 <g:form action="addWarning" id="${flightInstance.id}">
                                     <g:submitButton name="Add warning" />
-                                </g:form>                                
+                                </g:form>  
+                                <g:form action="removeWarning" id="${flightInstance.id}">
+                                    <g:submitButton name="Remove warning" />
+                                </g:form>
                             </td>
                        
                             <g:if test="${flightInstance.endTime != null}">
@@ -273,7 +276,7 @@
 
             <h1>Control the displayer (<a style="font-weight:normal" href="#" onclick="openDisplayer();return false;">open the diplayer</a>)</h1>
             <table>
-                <tr>
+                <!--<tr>
                     <td>
                         <p style="color:#666; font-weight:bold">Send message !</p>
                         <g:if test="${flash.sendMessage}">
@@ -289,7 +292,7 @@
                         <g:actionSubmit action="clearMessage" value="Clear" />
                         </g:form>
                       </td>
-                  </tr>
+                  </tr> -->
                   <tr>
                       <td>  
                         <p style="color:#666; font-weight:bold">Display results</p>

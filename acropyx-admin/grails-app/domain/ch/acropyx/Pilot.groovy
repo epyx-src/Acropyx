@@ -140,7 +140,7 @@ class Pilot extends Competitor {
     }
 
     def String toJSON() {
-        '{' + '"name" : "' + name + '",' + '"country" : "' + toCountryISO3166_1()  + '"' + addAge() + addImageSrc() + addFlyingSince() + addGlider() + addSponsor() + addTicker() + '}'
+        '{' + '"name" : "' + name + '",' + '"country" : "' + toCountryISO3166_1()  + '"' + addAge() + addImageSrc() + addFlyingSince() + addGlider() + addSponsor() + addSelection() + addTicker() + '}'
     }
     def String addImageSrc() {
         def result = ''
@@ -186,6 +186,16 @@ class Pilot extends Competitor {
         result
     }
 
+   def String addSelection() {
+        def result = ''
+        if ( selection ) {
+            Object[] args = [
+                selection
+            ]
+            result = ',"ranking" : "' + messageSource.getMessage( 'displayer.pilot.selection', args, Locale.default ) + '"'
+        }
+        result
+    }
     
     def String addTicker() {
         def result = ',"ticker" : "'
@@ -194,6 +204,11 @@ class Pilot extends Competitor {
             if ( job ) {
                 result += addSeparator() + messageSource.getMessage( 'displayer.ticker.job', [job]as Object[], Locale.default )
             }
+            
+            if ( selection ) {
+                result +=  addSeparator() + messageSource.getMessage( 'displayer.ticker.selection', [selection]as Object[], Locale.default )
+            }
+            
             if ( glider ) {
                 result += addSeparator() + messageSource.getMessage( 'displayer.ticker.glider', [glider]as Object[], Locale.default )
             }

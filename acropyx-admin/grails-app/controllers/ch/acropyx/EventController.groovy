@@ -257,6 +257,23 @@ class EventController {
     }
 
     @Secured(['ROLE_EVENT', 'ROLE_ADMIN'])
+    def removeWarning = {
+        def flightInstance = Flight.get(params.id)
+        if (flightInstance == null) {
+            flash.flightMessage = "Please choose a flight"
+        }
+        else {
+            try {
+                flightInstance.removeWarning()
+                flash.flightMessage = String.format("%d warning(s)", flightInstance.warnings)
+            } catch (Exception e) {
+                flash.flightMessage = e.getLocalizedMessage()
+            }
+        }
+        redirect(action: "home")
+    }
+    
+    @Secured(['ROLE_EVENT', 'ROLE_ADMIN'])
     def sendMessage = {
         displayerService.clearPaf(getTenantName())
 
