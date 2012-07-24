@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="run-results" language="groovy" pageWidth="612" pageHeight="792" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="29e04439-0e80-4611-bc91-2cca9c174b6e">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<field name="competition" class="java.lang.String"/>
+	<field name="name" class="java.lang.String"/>
+	<field name="startTime" class="java.lang.String"/>
+	<field name="endTime" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="ad4e0ca3-c1fa-4bc3-aca3-39150fb95239" x="102" y="35" width="145" height="44"/>
+				<textElement verticalAlignment="Middle">
+					<font size="22" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Runs]]></text>
+			</staticText>
+			<image>
+				<reportElement uuid="338900e8-a211-40d3-84da-ec0c8627d0b7" x="0" y="0" width="102" height="79"/>
+				<imageExpression><![CDATA["/home/eliecer/Repo/Acropyx/acropyx-admin/web-app/reports/fai_logo_cmyk.png"]]></imageExpression>
+			</image>
+			<textField pattern="MMMMM dd, yyyy">
+				<reportElement uuid="95b8eacc-0730-457e-9b90-16cc6cc13efd" x="472" y="0" width="100" height="20"/>
+				<textElement verticalAlignment="Bottom">
+					<font isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="79012b5c-4ba5-4a1f-99c3-5beae79d49b7" x="2" y="15" width="100" height="20"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Run List]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="39" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="02c93755-7f1b-468d-85e2-db13747fb51c" x="2" y="19" width="129" height="20"/>
+				<textElement textAlignment="Left" verticalAlignment="Bottom">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Competition]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="18e92bfc-5562-4e8c-91d3-28c55b9b9d3e" x="131" y="19" width="145" height="20"/>
+				<textElement textAlignment="Left" verticalAlignment="Bottom">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Name]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="0f7f2048-0623-4103-aeb7-7b0146c7a11a" x="276" y="19" width="143" height="20"/>
+				<textElement textAlignment="Left" verticalAlignment="Bottom">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Start Time]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="0abd40a2-cc55-4aef-b7ef-62e4830395fd" x="419" y="19" width="153" height="20"/>
+				<textElement textAlignment="Left" verticalAlignment="Bottom">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[End Time]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="24" splitType="Stretch">
+			<line>
+				<reportElement uuid="fbd82a19-8c4d-4c11-9314-e6b0b35a457e" x="2" y="0" width="570" height="1"/>
+			</line>
+			<textField>
+				<reportElement uuid="284ef1fc-9bd0-4c4e-89a8-061d32f2fc57" x="2" y="0" width="129" height="20"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{competition}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="5aba8713-aa12-4593-86c2-54cf5eb66498" x="131" y="1" width="145" height="20"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{name}]]></textFieldExpression>
+			</textField>
+			<textField pattern="HH.mm" isBlankWhenNull="true">
+				<reportElement uuid="e2554f38-ff8b-4275-be45-a84123b178e5" x="276" y="0" width="142" height="20"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{startTime}]]></textFieldExpression>
+			</textField>
+			<textField pattern="HH.mm" isBlankWhenNull="true">
+				<reportElement uuid="ec8209dc-8e51-4fb5-a112-2543ac07f76e" x="419" y="0" width="153" height="20"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{endTime}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="22" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="27" splitType="Stretch">
+			<textField>
+				<reportElement uuid="c28e0466-0146-4774-8e1b-263649687811" x="231" y="7" width="100" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="25" splitType="Stretch"/>
+	</summary>
+</jasperReport>

@@ -258,7 +258,7 @@ class DisplayerService {
     }
 
     def double roundResult(result) {
-        def decimalFormat = new DecimalFormat("#.#")
+        def decimalFormat = new DecimalFormat("#.###")
         decimalFormat.setRoundingMode(RoundingMode.HALF_UP)
         def markString = decimalFormat.format(result)
         return markString as double

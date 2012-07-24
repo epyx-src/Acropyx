@@ -11,8 +11,8 @@
             <span class="menuButton"><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></span>
             <span class="menuButton"><a class="admin" href="${createLink(uri: '/admin')}"><g:message code="default.admin.label"/></a></span>
             <span class="menuButton"><g:link class="list" controller="run" action="export" id="${runInstance.id}">Export</g:link></span>
-            <span class="menuButton"><g:link class="list" controller="run" action="export_pdf" id="${runInstance.id}">Export PDF</g:link></span>
-            
+            <span class="menuButton"><g:link class="list" controller="run" action="export_pdf" id="${runInstance.id}">Export to PDF</g:link></span>
+
             
             <sec:ifNotLoggedIn>
                 <span class="menuLogin"><a class="login" href="${createLink(uri: '/login')}"><g:message code="default.login.label"/></a></span>
@@ -66,6 +66,13 @@
                     </tbody>
                 </table>
             </div>
+            <g:jasperReport controller="resultRun" action="reportRunResults"  jasper="runresults" format="PDF" name="All Runs Results">
+            <input type="hidden" name="run_id" value="${runInstance.id}"/>
+                <input type="hidden" name="ACROPYX_COMPETITION" value="TEST"/>
+                <input type="hidden" name="ACROPYX_RUN" value="RUN1"/>
+                <input type="hidden" name="ACROPYX_RESULT" value="RESULTS"/>
+
+            </g:jasperReport>
         </div>
     </body>
 </html>

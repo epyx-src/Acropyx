@@ -16,6 +16,9 @@
  *******************************************************************************/
 package ch.acropyx
 
+import java.text.DecimalFormat
+import java.math.RoundingMode
+
 class ResultRunController {
 
     def index = {
@@ -41,5 +44,63 @@ class ResultRunController {
             flights = runInstance.findEndedFlights(true)
         }
         return [runInstance: runInstance, flights: flights]
+    }
+    def reportRunResults = {
+        def run = Run.list()
+        def runInstance = Run.get(params.run_id)
+
+        def flights = runInstance.findEndedFlights(true)
+        def labels = [:]
+        def fields = []
+
+        def resultList = []
+
+        def maxLocationIndex=0;
+
+        flights.eachWithIndex { flight, i ->
+            def expanded_record = ["rank": i+1]
+            if (!fields.contains("rank")){
+                fields.add("rank")
+                labels["rank"] = "Rank"
+            }
+            expanded_record["competitor"] =  flight.competitor.name
+            if (!fields.contains("competitor")){
+                fields.add("competitor")
+                labels["competitor"] = "Competitor"
+            }
+            def detailedResults = flight.computeDetailedResults()
+            runInstance.competition.markCoefficients.eachWithIndex { markCoefficient, y ->
+                def markName = markCoefficient.markDefinition.name
+                expanded_record["${markName}"] = roundMark(detailedResults.get(markCoefficient.id))
+                if (!fields.contains("${markName}")){
+                    fields.add("${markName}")
+                    labels["${markName}"] = "${markName}"
+                }
+
+            }
+            expanded_record["Result"] =  roundMark(flight.computeResult(detailedResults))
+            if (!fields.contains("Result")){
+                fields.add("Result")
+                labels["Result"] = "Result"
+            }
+
+            resultList.add expanded_record
+        }
+
+        //exportService.export("pdf", response.outputStream, resultList, fields, labels, [:], [:])
+
+        //def run = Run.list()
+
+        params.ACROPYX_COMPETITION = runInstance.competition.toString()
+        params.ACROPYX_RUN = runInstance.toString()
+        params.ACROPYX_RESULT = (runInstance.isEnded())? "Final results": "Intermediate results"
+        chain(controller:'jasper',action:'index',model:[data:resultList],params:params)
+    }
+
+    def double roundMark(mark) {
+        def decimalFormat = new DecimalFormat("#.###")
+        decimalFormat.setRoundingMode(RoundingMode.HALF_UP)
+        def markString = decimalFormat.format(mark)
+        return markString as double
     }
 }
