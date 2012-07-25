@@ -25,6 +25,9 @@ stacktrace.log
 # Acropyx database
 acropyxDb.*
 
+
+.idea/
+
 ########################################3
 # Visual Studio projects
 #ignore thumbnails created by windows
