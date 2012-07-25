@@ -232,15 +232,15 @@ class EventController {
                     flightInstance.end()
                     displayerService.flightHasEnded(getTenantName(), flightInstance)
                     
-                   // return  redirect(controller: "resultRun", id:flightInstance.run.id)
-                    def runId =  flightInstance.run.id   
-                    def competitionId = flightInstance.competition.id
+                   return  redirect(controller: "resultRun", id:flightInstance.run.id)
+                   // def runId =  flightInstance.run.id
+                   // def competitionId = flightInstance.competition.id
                    // def result = '[{"runId"	 : "John", "competitionId" : "New York"}]'
-                    render(contentType: "text/json") {
-                            runId = runId
-                            competitionId= competitionId
-                    }
-                    //return '{"runId":"' + runid + '"}' as JSON;
+                   // render(contentType: "text/json") {
+                   //         runId = runId
+                   //         competitionId= competitionId
+                   // }
+                   //return '{"runId":"' + runid + '"}' as JSON;
                
                 }
                 else {
@@ -250,7 +250,7 @@ class EventController {
                 flash.flightMessage = e.getLocalizedMessage()
             }
         }
-      //  redirect(action: "home")
+       redirect(action: "home")
     }
 
     @Secured(['ROLE_EVENT', 'ROLE_ADMIN'])

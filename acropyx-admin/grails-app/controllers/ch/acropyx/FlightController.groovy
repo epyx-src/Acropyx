@@ -27,8 +27,11 @@ class FlightController {
     }
 
     def list = {
-        params.max = Math.min(params.max ? params.int('max') : 10, 100)
-        [flightInstanceList: Flight.list(params), flightInstanceTotal: Flight.count()]
+     //   params.max = Math.min(params.max ? params.int('max') : 100, 100)
+
+        def flightList =  Flight.list(max: 100, sort: "startTime", order: "desc")
+
+        [flightInstanceList: flightList, flightInstanceTotal: Flight.count()]
     }
 
     @Secured(['ROLE_ADMIN'])

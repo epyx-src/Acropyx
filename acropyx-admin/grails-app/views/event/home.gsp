@@ -18,9 +18,7 @@
                 {
                   thisObj = this;
                   thisObj.ajaxEndFlight(flightId);
-                  //TODO Put on Success call and add 20seg and 40seg to config 
-                  
-                 }
+                }
                 
                 function ajaxEndFlight(flightId)
                 {
@@ -28,7 +26,7 @@
                           url: "${createLink(controller: 'event', action: 'endFlight')}",//'http://test1.localhost:8080/event/endFlight', 
                           dataType: 'json',
                           data: {
-                                  id: flightId,
+                                  id: flightId
                           },
                           success: function(data) {
                               var runId = data.runId;
@@ -51,9 +49,9 @@
                           url: "${createLink(controller: 'event', action: 'sendRunResultToDisplay')}",//'http://test1.localhost:8080/event/sendRunResultToDisplay', 
                           dataType: 'json',
                           data: {
-                                  id: runId,
+                                  id: runId
                           },
-                          success: function() {
+                          success: function(data) {
                                   alert('ok- Run');
                           },
                           error: function(request, status, error) {
@@ -71,9 +69,9 @@
                           url: "${createLink(controller: 'event', action: 'sendCompetitionResultToDisplay')}",//'http://test1.localhost:8080/event/sendCompetitionResultToDisplay', 
                           dataType: 'json',
                           data: {
-                                  id: competitionId,
+                                  id: competitionId
                           },
-                          success: function() {
+                          success: function(data) {
                                //   alert('ok- Competition');
                           },
                           error: function(request, status, error) {
@@ -327,9 +325,9 @@
                             </g:if>
                             <g:else>
                                 <td>
-                                  <a id="endFlight" onclick="endFlight(${flightInstance.id});">END</a>
+                                  %{--<a id="endFlight" onclick="endFlight(${flightInstance.id});">END</a>--}%
 	                                <g:form action="endFlight" id="${flightInstance.id}">
-                                          <a id="endFlight1" onclick="endFlight(${flightInstance.id});">END</a>
+                                          %{--<a id="endFlight1" onclick="endFlight(${flightInstance.id});">END</a>--}%
 	                                    <g:submitButton name="End" />
 	                                </g:form>
                                     <g:form action="deleteFlight" id="${flightInstance.id}">

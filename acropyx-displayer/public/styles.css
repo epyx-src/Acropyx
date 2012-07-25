@@ -90,7 +90,7 @@ body {
 #mark_table {
 	position: absolute;
 	left: 10px;
-	right: 40%;
+	right: 20%;
 	bottom: 10px;
 	font:bold 15pt arial;
 	background:rgba(0,0,0,0.8);

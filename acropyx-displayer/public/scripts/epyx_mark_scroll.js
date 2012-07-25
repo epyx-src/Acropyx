@@ -84,6 +84,15 @@ var epyxMarkTableScroll = function() {
 	function getCountryImageSrc( obj ) {
 		return "images/flags/"+obj.country.toLowerCase()+".png";
 	}
+
+    function getWarningsImageSrc( obj ) {
+        if (obj.warnings >= 3)
+        {
+            return  "images/red_card.png";
+        }
+
+        return "images/yellow_card.png";
+    }
 	
 	/**
 	 * paint the given row in a context and at position
@@ -105,13 +114,18 @@ var epyxMarkTableScroll = function() {
 		context.restore();
 		var textLineY = y + h - 22;
 		var mark_width = 0;
-		if (row.mark){
-			mark_width = 80
+		if (row.mark || row.mark == 0){
+			mark_width = 130
 		}
 		var flag_width = 0;
 		if (row.country){
 			flag_width = 60
 		}
+        var nbRuns_width = 0;
+        if (row.nbRuns > 0)
+        {
+            nbRuns_width = 150;
+        }
 	
 		//---------- draw number ----------------
 		context.save();
@@ -132,7 +146,7 @@ var epyxMarkTableScroll = function() {
 		my_gradient.addColorStop(0, "rgba(255,255,255,0.0)");
 		my_gradient.addColorStop(1, "rgba(255,255,255,0.3)");
 		context.fillStyle = my_gradient;
-		roundRect(context,x+7, y+8, nb_width-6, 15,10,true,false);
+		roundRect(context,x+7, y+8, nb_width-12, 15,10,true,false);
 		context.restore();
 		
 		//-------- draw competitor text -------------
@@ -141,7 +155,7 @@ var epyxMarkTableScroll = function() {
 		my_gradient.addColorStop(0, "rgba(255,255,255,0.8)");
 		my_gradient.addColorStop(1, "rgba(255,255,255,0.0)");
 		context.fillStyle = my_gradient;
-	    	var endCompetitorGradientX = w-mark_width-90;
+	    	var endCompetitorGradientX = w-mark_width-80;
 			
 		roundRect(context, x+nb_width+10, y+5, endCompetitorGradientX, 40, 20, true, false);
 		
@@ -149,10 +163,40 @@ var epyxMarkTableScroll = function() {
 		context.textAlign = "left";
 		context.font = fontStyle;
 		context.fillText(row.name, x+nb_width+flag_width+14, textLineY);
+        //Pint Runs count
+
 		if (row.nbRuns) {
-		    context.fillText(row.nbRuns + " run(s)", endCompetitorGradientX-90, textLineY);
-		}
-		context.restore();
+            var runText = (row.nbRuns == 1)? " run" : " runs";
+            context.fillText(row.nbRuns + runText , endCompetitorGradientX-70, textLineY);
+        }
+        context.restore();
+
+        //Paint warnings
+        if ( row.warnings > 0 ) {
+            var cardImage = new Image();
+            cardImage.src = getWarningsImageSrc(row);
+
+            cardImage.onload = function() {
+                context.save();
+                context.shadowOffsetX = 3;
+                context.shadowOffsetY = 3;
+                context.shadowColor = "rgba(0,0,0,0.3)";
+                context.shadowBlur = 5;
+                //context.drawImage(flag,x+w+posX+3,y+3,rowHeight-17,rowHeight-17);
+                context.drawImage(cardImage,endCompetitorGradientX-nbRuns_width,y+6,rowHeight-17,rowHeight-17);
+
+                if (row.warnings == 2)
+                {
+                    context.drawImage(cardImage,endCompetitorGradientX-nbRuns_width-40 ,y+6,rowHeight-17,rowHeight-17);
+                }
+
+                context.restore();
+            };
+        }
+
+
+
+
 		
 		//---------- draw flag ------------
 		if ( row.country ) {
@@ -177,7 +221,7 @@ var epyxMarkTableScroll = function() {
 		context.save();
 		
 		
-		if ( row.mark ) {
+		if ( row.mark || row.mark == 0) {
 		var fontColor = "white";
 		var glow = undefined;
 		my_gradient = context.createLinearGradient(x, y+5, x, y+h-10);
@@ -215,8 +259,13 @@ var epyxMarkTableScroll = function() {
 		}
 		context.fillStyle = fontColor;
 		context.font = "bold 30pt arial";
-		context.textAlign = "left";
-		context.fillText(row.mark, x+w-mark_width-3, textLineY);
+		context.textAlign = "right";
+        if (row.mark == 0 ){
+            context.fillText("DSQ", x+w-10, textLineY);
+        }
+        else{
+		    context.fillText(row.mark, x+w-10, textLineY);
+        }
 		context.restore();
 		//+++++-- Highlight ---
 		my_gradient = context.createLinearGradient(x, y, x, y+30);

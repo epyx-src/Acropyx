@@ -198,10 +198,11 @@ class DisplayerService {
         def endedFlights = run.findEndedFlights(true)
 
         endedFlights.eachWithIndex { flight, i ->
-            json += '{ "name" : "' + flight.competitor.name + '", "mark" : ' + roundResult(flight.computeResult(flight.computeDetailedResults()))
+            json += '{ "name" : "' + flight.competitor.name + '", "warnings" : '  + flight.warnings + ', "mark" : "' + roundResult(flight.computeResult(flight.computeDetailedResults()))    + '"'
             if ( flight.competitor instanceof Pilot ) {
                 json += ', "country" : "' + flight.competitor.toCountryISO3166_1() + '"'
             }
+
             json += '}'
             if (i < endedFlights.size() -1) {
                 json += ','
@@ -215,7 +216,7 @@ class DisplayerService {
         def results = competition.computeResults()
 
         results.eachWithIndex { result, i ->
-            json += '{ "name" : "' + result.competitor.name + '", "nbRuns" : ' + result.flights.size() + ', "mark" : ' + roundResult(result.overall)
+            json += '{ "name" : "' + result.competitor.name + '", "warnings" : '  + result.warnings + ', "nbRuns" : ' + result.flights.size() + ', "mark" : "' + roundResult(result.overall) + '"'
             if (result.competitor instanceof Pilot) {
                 json += ', "country" : "' + result.competitor.toCountryISO3166_1() + '"'
             }
@@ -236,7 +237,7 @@ class DisplayerService {
                 ii++
                 def markCoefficient = MarkCoefficient.get(markCoefficientId)
                 json += '{ "kind" : "' + markCoefficient.markDefinition.name + '"'
-                json += ', "value" : ' + roundResult(mark) + ' }'
+                json += ', "value" : "' + roundResult(mark) + '" }'
                 if (ii < nbOfResults) {
                     json += ','
                 }
@@ -255,10 +256,10 @@ class DisplayerService {
         }
     }
 
-    def double roundResult(result) {
-        def decimalFormat = new DecimalFormat("#.###")
+    def String roundResult(result) {
+        def decimalFormat = new DecimalFormat("0.000")
         decimalFormat.setRoundingMode(RoundingMode.HALF_UP)
         def markString = decimalFormat.format(result)
-        return markString as double
+        return markString;
     }
 }

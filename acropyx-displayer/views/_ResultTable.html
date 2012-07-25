@@ -4,12 +4,12 @@
 			{{each(i, mark) marks}}
 			<tr>
 				<td class="tete" style="font-size: 2.5em; font-weight: bold;">${__(mark.kind)}</td>
-				<td class="mark"><canvas class="annim_mark" height="40" width="100">${mark.value}</canvas></td>
+				<td class="mark"><canvas class="annim_mark" height="40" width="170">${mark.value}</canvas></td>
 			</tr>
 			{{/each}}
 			<tr>
 				<td class="tete" style="font-size: 2.5em; font-weight: bold; color: #B52">${__(overall.kind)}</td>
-				<td class="mark"><canvas class="annim_mark" height="40" width="100">${overall.value}</canvas></td>
+				<td class="mark"><canvas class="annim_mark" height="40" width="170">${overall.value}</canvas></td>
 				{{if (warnings)}}
 				<td class="mark">
 					{{if (warnings == 1)}}
@@ -17,7 +17,7 @@
 					{{else (warnings == 2)}}
 					<img src=images/yellow_card.png /><img src=images/yellow_card.png />
 					{{else (warnings == 3)}}
-					<img src=images/red_card.png />
+					    <img src=images/red_card.png  height="80"/>
 					{{/if}}										
 				</td>
 				{{/if}}			
