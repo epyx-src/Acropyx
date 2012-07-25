@@ -87,9 +87,6 @@ class DisplayerService {
                 body : '{ "name" : "' + name + '", "text" : "' + text + '" }',
                 requestContentType : ContentType.JSON,
                 headers : ["Tenant": tenant] )
-        
-        sleep(30000)
-        runStartingOrder(tenant, run)
     }
 
     def void runHasEnded(String tenant, Run run) {
@@ -179,6 +176,7 @@ class DisplayerService {
     
     
     def String generateRunStartingOrder(Run run){
+        
         def String json = '['
         def competitors = Competitor.competitorsForActiveRun()
         
@@ -258,7 +256,7 @@ class DisplayerService {
     }
 
     def double roundResult(result) {
-        def decimalFormat = new DecimalFormat("#.#")
+        def decimalFormat = new DecimalFormat("#.###")
         decimalFormat.setRoundingMode(RoundingMode.HALF_UP)
         def markString = decimalFormat.format(result)
         return markString as double
