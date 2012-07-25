@@ -27,7 +27,7 @@ acropyxDb.*
 
 
 .idea/
-
+*.iml
 ########################################3
 # Visual Studio projects
 #ignore thumbnails created by windows
