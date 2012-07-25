@@ -16,6 +16,9 @@
  *******************************************************************************/
 package ch.acropyx
 
+import java.text.DecimalFormat
+import java.math.RoundingMode
+
 class ResultCompetitionController {
 
     def index = {
@@ -33,5 +36,20 @@ class ResultCompetitionController {
         def competitionInstance = Competition.get(params.id)
 
         return [competitionInstance: competitionInstance, endedRuns: competitionInstance.findStartedRuns(), competitorResults: competitionInstance.computeResults()]
+    }
+
+    def reportCompetitionResults = {
+
+        def competitionInstance = Competition.get(params.competition_id)
+
+        def runs = competitionInstance.findEndedRuns()
+
+    }
+
+    def double roundMark(mark) {
+        def decimalFormat = new DecimalFormat("#.###")
+        decimalFormat.setRoundingMode(RoundingMode.HALF_UP)
+        def markString = decimalFormat.format(mark)
+        return markString as double
     }
 }

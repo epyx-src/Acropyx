@@ -59,6 +59,13 @@
                     </tbody>
                 </table>
             </div>
+
+            <!-- <g:jasperReport controller="resultCompetition" action="reportCompetitionResults"  jasper="competitionresults" format="PDF" name="Competition Results">
+                <input type="hidden" name="competition_id" value="${competitionInstance}.id}"/>
+                <input type="hidden" name="ACROPYX_COMPETITION" value="TEST"/>
+                <input type="hidden" name="ACROPYX_RESULT" value="RESULTS"/>
+            </g:jasperReport>     -->
+
         </div>
     </body>
 </html>

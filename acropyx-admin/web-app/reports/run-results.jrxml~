@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="run-results" language="groovy" pageWidth="612" pageHeight="792" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="29e04439-0e80-4611-bc91-2cca9c174b6e">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="ad4e0ca3-c1fa-4bc3-aca3-39150fb95239" x="102" y="35" width="145" height="44"/>
+				<textElement verticalAlignment="Middle">
+					<font size="22" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Runs Results]]></text>
+			</staticText>
+			<image>
+				<reportElement uuid="338900e8-a211-40d3-84da-ec0c8627d0b7" x="0" y="0" width="102" height="79"/>
+				<imageExpression><![CDATA["home/eliecer/Repo/Acropyx/acropyx-admin/web-app/reports/fai_logo_cmyk.png"]]></imageExpression>
+			</image>
+			<textField pattern="MMMMM dd, yyyy">
+				<reportElement uuid="95b8eacc-0730-457e-9b90-16cc6cc13efd" x="472" y="0" width="100" height="20"/>
+				<textElement verticalAlignment="Bottom">
+					<font isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="79012b5c-4ba5-4a1f-99c3-5beae79d49b7" x="2" y="15" width="129" height="20"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Run Result List]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="39" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="02c93755-7f1b-468d-85e2-db13747fb51c" x="2" y="19" width="48" height="20"/>
+				<textElement textAlignment="Left" verticalAlignment="Bottom">
+					<font size="12" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Rank]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="18e92bfc-5562-4e8c-91d3-28c55b9b9d3e" x="50" y="19" width="96" height="20"/>
+				<textElement textAlignment="Left" verticalAlignment="Bottom">
+					<font size="12" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Competitor]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="0f7f2048-0623-4103-aeb7-7b0146c7a11a" x="146" y="19" width="141" height="20"/>
+				<textElement textAlignment="Left" verticalAlignment="Bottom">
+					<font size="12" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Technical expression]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="0abd40a2-cc55-4aef-b7ef-62e4830395fd" x="298" y="19" width="106" height="20"/>
+				<textElement textAlignment="Left" verticalAlignment="Bottom">
+					<font size="12" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Choreography]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="fb1fc95b-2634-4675-bdbb-ff58f52f95a3" x="404" y="19" width="100" height="20"/>
+				<textElement verticalAlignment="Bottom">
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[Landing]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="ea584fff-11a9-421e-a62f-562c78fff5b3" x="504" y="19" width="68" height="20"/>
+				<textElement verticalAlignment="Bottom">
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[Result]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="24" splitType="Stretch">
+			<line>
+				<reportElement uuid="fbd82a19-8c4d-4c11-9314-e6b0b35a457e" x="2" y="0" width="570" height="1"/>
+			</line>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="17" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="20" splitType="Stretch">
+			<textField>
+				<reportElement uuid="c28e0466-0146-4774-8e1b-263649687811" x="231" y="0" width="100" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="12" splitType="Stretch"/>
+	</summary>
+</jasperReport>

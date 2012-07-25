@@ -53,6 +53,7 @@
             <div class="paginateButtons">
                 <g:paginate total="${runInstanceTotal}" />
             </div>
+            <g:jasperReport controller="run" action="reportRun" jasper="run" format="PDF" name="All Runs" />
         </div>
     </body>
 </html>

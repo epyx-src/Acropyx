@@ -164,14 +164,10 @@ class RunController {
         def flights = runInstance.findEndedFlights(true)
         def labels = [:]
         def fields = []
-         
-               
+
         response.setContentType("application/pdf") //config.grails.mime.types[pdf]
         response.setHeader("Content-disposition", "filename= test.pdf")
 
-       
-        
-               
         def resultList = []
 
         def maxLocationIndex=0;
@@ -194,41 +190,20 @@ class RunController {
                 if (!fields.contains("${markName}")){
                     fields.add("${markName}")
                     labels["${markName}"] = "${markName}"
-                }   
-                
+                }
+
             }
             resultList.add(expanded_record)
         }
 
+        exportService.export("pdf", response.outputStream, resultList, fields, labels, [:], [:])
 
-        
-        
-
-        exportService.export("pdf", response.outputStream, resultList, fields, labels, [:], [:]) 
-        
-        
-        
-        
-        
-        
-        
-        //List fields = ["Rank", "Competitor", "Technical expression", "Choreography", "Landing", "Result"]
-        //def labels = ["Rank":"Rank", "Competitor":"Competitor", "Technical expression" :"Technical Expression" , "Choreography": "Choreography", "Landing":"Landing", "Result": "Result"]
-        
-        
-
-        //flights.eachWithIndex { flight, i ->
-        //    values.put('rank', i+1)
-        //    values.put('competitor', flight.competitor.name)
-
-        //    def detailedResults = flight.computeDetailedResults()
-        //    runInstance.competition.markCoefficients.each { markCoefficient ->
-        //        values.put(markCoefficient.markDefinition.name, detailedResults.get(markCoefficient.id))
-              //  fields.add(markCoefficient.markDefinition.name)
-        //    }
-        //}
-        
-        
-        //exportService.export("pdf", response.outputStream, values, fields, labels, [:], [:])        
     }
+
+     def reportRun = {
+
+         def run = Run.list()
+         chain(controller:'jasper',action:'index',model:[data:run],params:params)
+    }
+
 }
