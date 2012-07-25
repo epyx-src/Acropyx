@@ -84,10 +84,9 @@ if ( epyxRenderer ) {
 		        var maxX = w - iw - 20;
 		        var nx = x;
 		        var ny = y+ ( headSize * 2.3 );
-			nx = displayBoxInfo(nx+10,ny, data.ranking,maxX);
 		        nx = displayBoxInfo(nx+10,ny, data.birthDate,maxX);
-		        nx = displayBoxInfo(nx+10,ny, data.glider,maxX);				
-                        nx = displayBoxInfo(x+10,ny+(headSize*1.3),data.sponsor,maxX);                       
+		        nx = displayBoxInfo(nx+10,ny, data.glider,maxX);	
+                        nx = displayBoxInfo(x+10,ny+(headSize*1.2),data.sponsor,maxX);
 		        //nx = displayBoxInfo(nx+10,ny, data.flyingSince,maxX);
 		        //nx = displayBoxInfo(nx+10,ny, data.acroSince,maxX);
 			};
@@ -99,7 +98,7 @@ if ( epyxRenderer ) {
 			context.save();
 			context.font = (headSize/1.7)+"pt arial" ;
 			
-			var ih = headSize*1.1;
+			var ih = headSize*1.2;
 			var textToDisplay = text;
 			var iw = context.measureText( text ).width * 1.1;
 			if ( maxX ) {
