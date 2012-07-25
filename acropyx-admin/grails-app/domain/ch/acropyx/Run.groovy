@@ -95,6 +95,28 @@ class Run implements Comparable {
 
         return endedFlights
     }
+    
+    def startingOrder(){
+        //Is first Run
+        
+        def endedRuns = run.competition.findEndedRuns()
+        if (endedRuns.length == 0)
+        {
+            return Pilot.list.sort(it.selection)
+        }
+        
+        def lastRun = endedRuns[-1]
+        
+        def competitors = Competitor.competitorsForActiveRun()
+        
+        return competitors.sort { competitor -> lastRun.getCompetitorPlace(competitor.id)}
+    }
+    
+    def getCompetitorPlace(Competitor){
+        findEndedFlights
+    }
+    
+    
 
     def String toString() {
         sprintf("%s:%s", competition?.code, name);

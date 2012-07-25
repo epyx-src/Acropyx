@@ -132,6 +132,30 @@ class EventController {
         }
         redirect(action: "home")
     }
+    
+    
+    @Secured(['ROLE_EVENT', 'ROLE_ADMIN'])
+    def startingOrderRun = {
+        def runInstance = Run.get(params.id)
+        if (runInstance == null) {
+            flash.runMessage = "Please choose a run"
+        }
+        else {
+            try {
+                if (runInstance.save()) {
+                    displayerService.runStartingOrder(getTenantName(), runInstance)
+                } else {
+                    def model = fetchEventModel();
+                    model.put('runInstance', runInstance)
+                    return render(view: "home", model: model)
+                }
+            } catch (Exception e) {
+                flash.runMessage = e.getLocalizedMessage()
+            }
+        }
+        redirect(action: "home")
+    }
+    
 
     @Secured(['ROLE_EVENT', 'ROLE_ADMIN'])
     def endRun = {
@@ -207,8 +231,17 @@ class EventController {
                 if ((flightInstance.marks?.size() > 0) && (flightInstance.manoeuvres?.size() > 0)) {
                     flightInstance.end()
                     displayerService.flightHasEnded(getTenantName(), flightInstance)
-                    displayerService.
-                    return redirect(controller: "resultRun", id:flightInstance.run.id)
+                    
+                   // return  redirect(controller: "resultRun", id:flightInstance.run.id)
+                    def runId =  flightInstance.run.id   
+                    def competitionId = flightInstance.competition.id
+                   // def result = '[{"runId"	 : "John", "competitionId" : "New York"}]'
+                    render(contentType: "text/json") {
+                            runId = runId
+                            competitionId= competitionId
+                    }
+                    //return '{"runId":"' + runid + '"}' as JSON;
+               
                 }
                 else {
                     flash.flightMessage = "Please enter maneuvers and vote before ending the flight"
@@ -217,7 +250,7 @@ class EventController {
                 flash.flightMessage = e.getLocalizedMessage()
             }
         }
-        redirect(action: "home")
+      //  redirect(action: "home")
     }
 
     @Secured(['ROLE_EVENT', 'ROLE_ADMIN'])

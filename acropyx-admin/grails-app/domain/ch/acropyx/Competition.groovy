@@ -110,8 +110,12 @@ class Competition {
     }
 
     def findEndedRuns() {
-        return runs.findAll { it.isEnded() };
+        return runs.findAll { it.isEnded() }.sort(it.endTime);
     }
+    
+   // def findFirstRun() {
+   //     return runs.sortBystartTime()[0]
+   // }
 
     def addDefaultCoefficients() {
         def markDefinition = MarkDefinition.findByName("Technical expression")

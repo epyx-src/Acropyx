@@ -237,4 +237,6 @@ class Pilot extends Competitor {
     def String toCountryISO3166_1() {
         country.substring( 0, 2 )
     }
+    
+    
 }

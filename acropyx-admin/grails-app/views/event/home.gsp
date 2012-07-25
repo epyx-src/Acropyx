@@ -12,7 +12,84 @@
     	<script> 
     		function openDisplayer() { 
     		    window.open('http://' + document.domain + ':' + ${ConfigurationHolder.config.ch.acropyx.displayerPort}); 
-    		} 
+    		}
+                
+                function endFlight(flightId)
+                {
+                  thisObj = this;
+                  thisObj.ajaxEndFlight(flightId);
+                  //TODO Put on Success call and add 20seg and 40seg to config 
+                  
+                 }
+                
+                function ajaxEndFlight(flightId)
+                {
+                    $.ajax({
+                          url: "${createLink(controller: 'event', action: 'endFlight')}",//'http://test1.localhost:8080/event/endFlight', 
+                          dataType: 'json',
+                          data: {
+                                  id: flightId,
+                          },
+                          success: function(data) {
+                              var runId = data.runId;
+                              var competitionId = data.competitionId;
+                              setTimeout(function() { thisObj.ajaxShowRunResult(runId); }, 20000);
+                              setTimeout(function() { thisObj.ajaxShowCompetitionResult(competitionId); }, 40000);
+                          },
+                          error: function(request, status, error) {
+                                //  alert('error');
+                          },
+                          complete: function() {
+                                 // alert('Complete');
+                          }
+                  });    
+                }
+                
+                function ajaxShowRunResult(runId)
+                {
+                  $.ajax({
+                          url: "${createLink(controller: 'event', action: 'sendRunResultToDisplay')}",//'http://test1.localhost:8080/event/sendRunResultToDisplay', 
+                          dataType: 'json',
+                          data: {
+                                  id: runId,
+                          },
+                          success: function() {
+                                  alert('ok- Run');
+                          },
+                          error: function(request, status, error) {
+                                //  alert('run - error');
+                          },
+                          complete: function() {
+                                //  alert(' run - Complete');
+                          }
+                  });    
+                }
+                
+                function ajaxShowCompetitionResult(competitionId)
+                {
+                  $.ajax({
+                          url: "${createLink(controller: 'event', action: 'sendCompetitionResultToDisplay')}",//'http://test1.localhost:8080/event/sendCompetitionResultToDisplay', 
+                          dataType: 'json',
+                          data: {
+                                  id: competitionId,
+                          },
+                          success: function() {
+                               //   alert('ok- Competition');
+                          },
+                          error: function(request, status, error) {
+                                //  alert('Competition - error');
+                          },
+                          complete: function() {
+                                //  alert(' Competition  - Complete');
+                          }
+                  });    
+                }
+                
+                
+                
+                function someFunction(){
+                  alert('OK');
+                }
         </script>
         
         <script>
@@ -150,6 +227,9 @@
 	                        <td><g:formatDate format="${grailsApplication.config.ch.acropyx.dateFormat}" date="${runInstance.startTime}" /></td>
 	                    
                             <td>
+                                <g:form action="startingOrderRun" id="${runInstance.id}">
+                                    <g:submitButton name="Starting order" />
+                                </g:form>
                                 <g:link controller="resultRun" action="show" id="${runInstance.id}" params="[notEndedFlights:true]">
                                     <g:submitButton name="Results" />
                                 </g:link>
@@ -247,7 +327,9 @@
                             </g:if>
                             <g:else>
                                 <td>
+                                  <a id="endFlight" onclick="endFlight(${flightInstance.id});">END</a>
 	                                <g:form action="endFlight" id="${flightInstance.id}">
+                                          <a id="endFlight1" onclick="endFlight(${flightInstance.id});">END</a>
 	                                    <g:submitButton name="End" />
 	                                </g:form>
                                     <g:form action="deleteFlight" id="${flightInstance.id}">

@@ -23,17 +23,18 @@ class Competitor {
 
     String name
     String bestResult
+    int rank;
 
     def String toString() {
         return name;
     }
 
-    static constraints = { bestResult(nullable:true) }
+    static constraints = { bestResult(nullable:true) rank(nullable:true) }
 
     def static List competitorsForActiveRun() {
         if ( Run.countByStartTimeIsNotNullAndEndTimeIsNull() == 1 ) {
             if ( Run.findByStartTimeIsNotNullAndEndTimeIsNull().competition.type == Competition.Type.Solo ) {
-                return Pilot.list()
+                return Pilot.listOrderByRank();
             }
             else {
                 return Team.list()
