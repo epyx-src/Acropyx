@@ -27,9 +27,9 @@ class FlightController {
     }
 
     def list = {
-     //   params.max = Math.min(params.max ? params.int('max') : 100, 100)
+        params.max = 100 //Math.min(params.max ? params.int('max') : 10, 100)
 
-        def flightList =  Flight.list(max: 100, sort: "startTime", order: "desc")
+        def flightList =  Flight.list(params)
 
         [flightInstanceList: flightList, flightInstanceTotal: Flight.count()]
     }

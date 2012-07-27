@@ -71,7 +71,8 @@ var epyxMarkAnimation = function() {
 				context.globalAlpha = alpha;
 				context.fillStyle = "white";
 				context.font = "bold " + animated.size + "pt arial";
-				context.fillText(animated.text, 0, canvas.height);
+                context.textAlign = "right";
+				context.fillText(animated.text, 170, canvas.height);
 				return true;
 			};
 			animated.draw(); // just to clear

@@ -91,12 +91,13 @@ body {
 	position: absolute;
 	left: 10px;
 	right: 20%;
-	bottom: 10px;
-	font:bold 15pt arial;
+	bottom: 5px;
+	font:bold 14pt arial;
 	background:rgba(0,0,0,0.8);
 	padding-right:2%;
 	border-radius: 20px;
-	border:solid 3px black
+	border:solid 3px black;
+    text-align: right;
 }
 
 th {
@@ -127,6 +128,7 @@ table.result {
 	position: relative;
 	padding-right: 20px;
 	padding-left: 10px;
+    text-align: right;
 
 }
 
@@ -148,6 +150,7 @@ td.tete {
 	padding-left: 20px;
 	border-style: groove;
 	-webkit-box-shadow: 0px 10px 15px #999;
+
 }
 
 #mark_table_result {
@@ -161,6 +164,8 @@ td.tete {
 	border-bottom:1px solid gray;
 	z-index:1;
 }
+
+
 
 
 #result_flight_name {

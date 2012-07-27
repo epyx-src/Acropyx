@@ -30,7 +30,7 @@ class MarkDefinitionController {
     }
 
     def list = {
-        params.max = Math.min(params.max ? params.int('max') : 10, 100)
+        params.max = 100 //Math.min(params.max ? params.int('max') : 10, 100)
         [markDefinitionInstanceList: MarkDefinition.list(params), markDefinitionInstanceTotal: MarkDefinition.count()]
     }
 

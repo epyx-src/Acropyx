@@ -187,7 +187,7 @@ var epyxMarkTableScroll = function() {
 
                 if (row.warnings == 2)
                 {
-                    context.drawImage(cardImage,endCompetitorGradientX-nbRuns_width-40 ,y+6,rowHeight-17,rowHeight-17);
+                    context.drawImage(cardImage,endCompetitorGradientX-nbRuns_width-50 ,y+6,rowHeight-17,rowHeight-17);
                 }
 
                 context.restore();

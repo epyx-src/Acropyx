@@ -4,7 +4,7 @@ if ( epyxRenderer ) {
 		var x = 0;
 		var y = 0;
 		
-		var headSize = h/5;
+		var headSize = h/6;
 		
 		//----- Display base
 		context.save();
@@ -84,9 +84,11 @@ if ( epyxRenderer ) {
 		        var maxX = w - iw - 20;
 		        var nx = x;
 		        var ny = y+ ( headSize * 2.3 );
-		        nx = displayBoxInfo(nx+10,ny, data.birthDate,maxX);
-		        nx = displayBoxInfo(nx+10,ny, data.glider,maxX);	
-                        nx = displayBoxInfo(x+10,ny+(headSize*1.2),data.sponsor,maxX);
+
+		        nx = displayBoxInfo(nx+10,ny, data.ranking,maxX);
+                nx = displayBoxInfo(nx+15,ny, data.birthDate,maxX);
+                nx = displayBoxInfo(nx+15,ny, data.glider,maxX);
+                nx = displayBoxInfo(x+10,ny+(headSize*1.7),data.sponsor,maxX);
 		        //nx = displayBoxInfo(nx+10,ny, data.flyingSince,maxX);
 		        //nx = displayBoxInfo(nx+10,ny, data.acroSince,maxX);
 			};

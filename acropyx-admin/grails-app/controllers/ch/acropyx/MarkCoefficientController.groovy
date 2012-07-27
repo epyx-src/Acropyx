@@ -25,7 +25,7 @@ class MarkCoefficientController {
     }
 
     def list = {
-        params.max = Math.min(params.max ? params.int('max') : 10, 100)
+        params.max = 100 //Math.min(params.max ? params.int('max') : 10, 100)
         [markCoefficientInstanceList: MarkCoefficient.list(params), markCoefficientInstanceTotal: MarkCoefficient.count()]
     }
 

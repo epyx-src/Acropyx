@@ -31,7 +31,7 @@ class RunController {
     }
 
     def list = {
-        params.max = Math.min(params.max ? params.int('max') : 10, 100)
+        params.max = 100 //Math.min(params.max ? params.int('max') : 10, 100)
         [runInstanceList: Run.list(params), runInstanceTotal: Run.count()]
     }
 

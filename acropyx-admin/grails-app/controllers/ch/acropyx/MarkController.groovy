@@ -27,7 +27,7 @@ class MarkController {
     }
 
     def list = {
-        params.max = Math.min(params.max ? params.int('max') : 20, 100)
+        params.max = 100 //Math.min(params.max ? params.int('max') : 20, 100)
         [markInstanceList: Mark.list(params), markInstanceTotal: Mark.count()]
     }
 
