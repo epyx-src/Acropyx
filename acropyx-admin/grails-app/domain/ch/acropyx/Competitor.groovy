@@ -34,7 +34,7 @@ class Competitor {
     def static List competitorsForActiveRun() {
         if ( Run.countByStartTimeIsNotNullAndEndTimeIsNull() == 1 ) {
             if ( Run.findByStartTimeIsNotNullAndEndTimeIsNull().competition.type == Competition.Type.Solo ) {
-                return Pilot.listOrderBySelection();
+                return Pilot.listOrderByCivlRank(order: "desc");
             }
             else {
                 return Team.list()

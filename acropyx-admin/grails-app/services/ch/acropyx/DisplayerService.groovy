@@ -54,7 +54,6 @@ class DisplayerService {
     
     def void runStartingOrder(String tenant, Run run){
         if (run) {
-            def msgKey = (run.endTime ? 'displayer.result.final.text' : 'displayer.result.intermediate.text')
             def subTitle = messageSource.getMessage( 'displayer.run_start.order', []as Object[], Locale.default )
             Object[] args = [
                 run.competition.name,
@@ -62,7 +61,8 @@ class DisplayerService {
                 subTitle
             ]
             def name = messageSource.getMessage( 'displayer.run_end.title', args, Locale.default )
-            def json = '{ "name" : "' + name + '", "competitors" : ' + generateRunStartingOrder(run) + '}'
+            //def competitors = generateRunStartingOrder(run, run.competition.id)
+            def json = '{ "name" : "' + name + '", "competitors" : ' + generateRunStartingOrder(run, run.competition.id) + '}'
             def resp = restClient.post( path : 'startOrderRun',
                     body : json,
                     requestContentType : ContentType.JSON,
@@ -175,11 +175,25 @@ class DisplayerService {
     }
     
     
-    def String generateRunStartingOrder(Run run){
+    def String generateRunStartingOrder(run, competitionId){
         
         def String json = '['
-        def competitors = Competitor.competitorsForActiveRun()
-        
+        def competitors = []
+
+
+        def competition =  Competition.get(competitionId)
+        def results = competition.computeResults()
+        if (results.size() > 0){
+            results.each { competitorResult ->
+                competitors.add(0,competitorResult.competitor)
+            }
+        }
+        else
+        {
+            competitors = Competitor.competitorsForActiveRun()
+        }
+
+
         competitors.eachWithIndex() { competitor, i ->
             json += '{ "name" :  "' + competitor.name +'"'
             if ( competitor instanceof Pilot ) {

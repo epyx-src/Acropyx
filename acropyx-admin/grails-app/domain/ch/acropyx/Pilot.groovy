@@ -39,6 +39,7 @@ class Pilot extends Competitor {
     String selection
     String glider
     String sponsor
+    Integer civlRank
 
     static constraints = {
         name(blank: false)
@@ -49,6 +50,7 @@ class Pilot extends Competitor {
         selection(nullable:true)
         glider(nullable:true)
         sponsor(nullable:true)
+        civlRank(nullable:true)
         picture(nullable:true, maxSize:5000000)
     }
 
@@ -87,7 +89,7 @@ class Pilot extends Competitor {
 
         removeAll();
         inputStream.toCsvReader(['charset':'UTF-8']).eachLine() { fields ->
-            if (fields?.length > 8) {
+            if (fields?.length >= 10) {
 
                 def Date dateOfBirth
                 try {
@@ -103,14 +105,15 @@ class Pilot extends Competitor {
                     flyingSinceYear = null;
                 }
 
-                def pilot = new Pilot( name:fields[0] + " " + fields[1],
-                        country:"che",
+                def pilot = new Pilot( name:fields[1] + " " + fields[2],
+                        country:fields[3],
                         dateOfBirth:dateOfBirth,
                         flyingSinceYear: flyingSinceYear,
-                        job: fields[5],
-                        glider:fields[6],
-                        sponsor:fields[7],
-                        bestResult:fields[8]
+                        job: fields[6],
+                        glider:fields[7],
+                        sponsor:fields[8],
+                        bestResult:fields[9],
+                        civlRank: fields[10]
                         )
                 try {
                     pilot.save(failOnError: true, flush: true)
@@ -140,7 +143,7 @@ class Pilot extends Competitor {
     }
 
     def String toJSON() {
-        '{' + '"name" : "' + name + '",' + '"country" : "' + toCountryISO3166_1()  + '"' + addAge() + addImageSrc() + addFlyingSince() + addGlider() + addSponsor() + addSelection() + addTicker() + '}'
+        '{' + '"name" : "' + name + '",' + '"country" : "' + toCountryISO3166_1()  + '"' + addAge() + addImageSrc() + addFlyingSince() + addGlider() + addSponsor() + addCivlRank() + addTicker() + '}'
     }
     def String addImageSrc() {
         def result = ''
@@ -186,13 +189,13 @@ class Pilot extends Competitor {
         result
     }
 
-   def String addSelection() {
+   def String addCivlRank() {
         def result = ''
-        if ( selection ) {
+        if ( civlRank ) {
             Object[] args = [
-                selection
+                    civlRank
             ]
-            result = ',"ranking" : "' + messageSource.getMessage( 'displayer.pilot.selection', args, Locale.default ) + '"'
+            result = ',"ranking" : "' + messageSource.getMessage( 'displayer.pilot.civlRank', args, Locale.default ) + '"'
         }
         result
     }
@@ -205,8 +208,8 @@ class Pilot extends Competitor {
                 result += addSeparator() + messageSource.getMessage( 'displayer.ticker.job', [job]as Object[], Locale.default )
             }
             
-            if ( selection ) {
-                result +=  addSeparator() + messageSource.getMessage( 'displayer.ticker.selection', [selection]as Object[], Locale.default )
+            if ( civlRank ) {
+                result +=  addSeparator() + messageSource.getMessage( 'displayer.ticker.civlRank', [civlRank]as Object[], Locale.default )
             }
             
             if ( glider ) {

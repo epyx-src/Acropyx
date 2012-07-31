@@ -94,15 +94,18 @@ class EventController {
     @Secured(['ROLE_EVENT', 'ROLE_ADMIN'])
     def endCompetition = {
         def competitionInstance = Competition.get(params.id)
+
         if (competitionInstance == null) {
             flash.competitionMessage = "Please choose a competition"
         }
         else {
             try {
                 competitionInstance.end();
-                displayerService.competitionHasEnded(getTenantName(), competitionInstance)
-                redirect(controller: "resultCompetition", action: "show",  id: competitionInstance.id)
-                return
+                if (params.displayCompetitionRanking){
+                    displayerService.competitionHasEnded(getTenantName(), competitionInstance)
+                    redirect(controller: "resultCompetition", action: "show",  id: competitionInstance.id)
+                    return
+                }
             } catch (Exception e) {
                 flash.competitionMessage = e.getLocalizedMessage()
             }
@@ -166,9 +169,11 @@ class EventController {
         else {
             try {
                 runInstance.end()
-                displayerService.runHasEnded(getTenantName(), runInstance)
-                redirect(controller: "resultRun", action: "show", id:runInstance.id)
-                return
+                if (params.displayRunRanking){
+                    displayerService.runHasEnded(getTenantName(), runInstance)
+                    redirect(controller: "resultRun", action: "show", id:runInstance.id)
+                    return
+                }
             } catch (Exception e) {
                 flash.runMessage = e.getLocalizedMessage()
             }
@@ -210,7 +215,7 @@ class EventController {
         }
         else {
             try {
-      
+
                     displayerService.flightHasStarted(getTenantName(), flightInstance)
                 }
              catch (Exception e) {
@@ -230,9 +235,11 @@ class EventController {
             try {
                 if ((flightInstance.marks?.size() > 0) && (flightInstance.manoeuvres?.size() > 0)) {
                     flightInstance.end()
-                    displayerService.flightHasEnded(getTenantName(), flightInstance)
-                    
-                   return  redirect(controller: "resultRun", id:flightInstance.run.id)
+
+                    if (params.displayFlightRanking){
+                        displayerService.flightHasEnded(getTenantName(), flightInstance)
+                    }
+                    return  redirect(controller: "resultRun", id:flightInstance.run.id)
                    // def runId =  flightInstance.run.id
                    // def competitionId = flightInstance.competition.id
                    // def result = '[{"runId"	 : "John", "competitionId" : "New York"}]'

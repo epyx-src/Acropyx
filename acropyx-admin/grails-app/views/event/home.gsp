@@ -166,7 +166,12 @@
 	                        </g:if>
 	                        <g:else>
 	                            <g:form action="endCompetition" id="${competitionInstance.id}">
-                                    <td><g:submitButton name="End" /></td>
+                                    <td>
+                                        <g:submitButton name="End" onclick="return confirm('Are sure you sure you want to end the competition ?')"/> <br/>
+                                        <g:checkBox name="displayCompetitionRanking" checked="false" title="Display Ranking"></g:checkBox>
+                                        <label>Display Ranking</label>
+                                    </td>
+
                                 </g:form>    
 	                        </g:else>
 	                    </tr>
@@ -238,7 +243,10 @@
                             </g:if>
                             <g:else>
                                 <g:form action="endRun" id="${runInstance.id}">
-                                    <td><g:submitButton name="End" /></td>
+                                    <td><g:submitButton name="End" onclick="return confirm('Are sure you sure you want to end the run ?')"/><br/>
+                                        <g:checkBox name="displayRunRanking" checked="false" title="Display Ranking"></g:checkBox>
+                                        <label>Display Ranking</label>
+                                    </td>
                                 </g:form>    
                             </g:else> 
 	                    </tr>
@@ -328,8 +336,12 @@
                                   %{--<a id="endFlight" onclick="endFlight(${flightInstance.id});">END</a>--}%
 	                                <g:form action="endFlight" id="${flightInstance.id}">
                                           %{--<a id="endFlight1" onclick="endFlight(${flightInstance.id});">END</a>--}%
-	                                    <g:submitButton name="End" />
-	                                </g:form>
+	                                    <g:submitButton name="End" onclick="return confirm('Are sure you sure you want to end the flight ?')"/>
+                                        <br/>
+                                        <g:checkBox name="displayFlightRanking" checked="false" title="Display Ranking"></g:checkBox>
+                                        <label>Display Ranking</label>
+
+	                                 </g:form>
                                     <g:form action="deleteFlight" id="${flightInstance.id}">
                                         <g:submitButton name="Delete" onclick="return confirm('Delete the flight with its maneuvers and marks ?')" />
                                     </g:form>  	                                
