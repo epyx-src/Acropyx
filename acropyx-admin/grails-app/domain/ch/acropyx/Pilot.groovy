@@ -238,7 +238,7 @@ class Pilot extends Competitor {
         "http://" + serverName + ":" + serverPort + "/pilot/displayPicture/" + id
     }
     def String toCountryISO3166_1() {
-        country.substring( 0, 2 )
+        country.substring( 0, 3 )
     }
     
     
