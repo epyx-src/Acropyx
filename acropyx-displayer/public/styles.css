@@ -197,16 +197,9 @@ td.tete {
     height:160px;
     top: 12px;
     left:15px;
-    background: url(images/acrobatic_logo.png)  top left no-repeat transparent;
-   /*background:url(images/logo-competition.png)  top left no-repeat transparent;*/
+    background: url(images/aerobatic_logo.png)  top left no-repeat transparent;
     width: 156px;
 }
-
-.logo_box
-{
-
-}
-
 
 #logo_competition_box{
     z-index: 3;
@@ -215,8 +208,7 @@ td.tete {
     top:12px;
     right: 5px;
     right: 15px;
-    background: url(images/logo_competition.png)  top left no-repeat transparent;
-    /*background:url(images/logo-competition.png)  top left no-repeat transparent;*/
+    background: url(images/competition_logo.png)  top left no-repeat transparent;
     width: 113px;
 }
 
