@@ -50,21 +50,21 @@
                             
                             <g:each in="${endedRuns}" var="endedRun">
                             	<% def flight = competitorResult.flights?.get(endedRun.id) %>
-                                <td><g:link controller="flight" action="show" id="${flight?.id}"><g:formatNumber number="${flight?.result}" format="#.#" roundingMode="HALF_UP" /></g:link><span style="color:#CCC"><g:formatNumber number="${flight?.result}" format=" (#.###)" roundingMode="HALF_UP" /></span></td>                      
+                                <td><g:link controller="flight" action="show" id="${flight?.id}"><g:formatNumber number="${flight?.result}" format="0.000" roundingMode="HALF_UP" /></g:link></td>
                             </g:each>    
                             
-                            <td><g:formatNumber number="${competitorResult.get('overall')}" format="#.#" roundingMode="HALF_UP" /><span style="color:#CCC"><g:formatNumber number="${competitorResult.get('overall')}" format=" (#.###)" roundingMode="HALF_UP" /></span></td>
+                            <td><g:formatNumber number="${competitorResult.get('overall')}" format="0.000" roundingMode="HALF_UP" /></td>
                         </tr>
                     </g:each>
                     </tbody>
                 </table>
             </div>
 
-            <!-- <g:jasperReport controller="resultCompetition" action="reportCompetitionResults"  jasper="competitionresults" format="PDF" name="Competition Results">
-                <input type="hidden" name="competition_id" value="${competitionInstance}.id}"/>
+            <g:jasperReport controller="resultCompetition" action="reportCompetitionResults"  jasper="competitionresults" format="PDF" name="Competition Results">
+                <input type="hidden" name="competition_id" value="${competitionId}"/>
                 <input type="hidden" name="ACROPYX_COMPETITION" value="TEST"/>
                 <input type="hidden" name="ACROPYX_RESULT" value="RESULTS"/>
-            </g:jasperReport>     -->
+            </g:jasperReport>
 
         </div>
     </body>

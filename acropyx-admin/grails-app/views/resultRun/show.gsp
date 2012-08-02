@@ -44,6 +44,7 @@
                             <g:each in="${runInstance.competition.markCoefficients}" status="i" var="markCoefficient">
                                 <th>${markCoefficient.markDefinition}</th>
                             </g:each>
+                            <th>Warnings</th>
                                                         
                             <th>Result</th>
                         </tr>
@@ -65,6 +66,8 @@
                             <g:each in="${runInstance.competition.markCoefficients}" var="markCoefficient">
                                 <td><g:formatNumber number="${detailedResults.get(markCoefficient.id)}" format="#.#" roundingMode="HALF_UP" /><span style="color:#CCC"><g:formatNumber number="${detailedResults.get(markCoefficient.id)}" format=" (#.###)" roundingMode="HALF_UP" /></span></td>
                             </g:each>
+
+                            <td>${flight.warnings}</td>
                             
                             <% def result = flight.computeResult(detailedResults) %>
                             <td><g:link controller="flight" action="show" id="${flight.id}"><g:formatNumber number="${result}" format="#.#" roundingMode="HALF_UP" /></g:link><span style="color:#CCC"><g:formatNumber number="${result}" format=" (#.###)" roundingMode="HALF_UP" /></span></td>

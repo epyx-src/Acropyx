@@ -32,7 +32,7 @@ class PilotController {
     }
 
     def list = {
-        params.max = 100 //Math.min(params.max ? params.int('max') : 10, 100)
+        params.max = Math.min(params.max ? params.int('max') : 100, 200)
         [pilotInstanceList: Pilot.list(params), pilotInstanceTotal: Pilot.count()]
     }
 

@@ -68,6 +68,22 @@ class ResultRunController {
                 fields.add("competitor")
                 labels["competitor"] = "Competitor"
             }
+
+            if (flight.competitor instanceof Pilot){
+                def pilot = flight.competitor as Pilot
+                expanded_record["Country"] =  pilot.country
+                if (!fields.contains("Country")){
+                    fields.add("Country")
+                    labels["Country"] = "Country"
+                }
+
+                expanded_record["Glider"] =  pilot.glider
+                if (!fields.contains("Glider")){
+                    fields.add("Glider")
+                    labels["Glider"] = "Glider"
+                }
+            }
+
             def detailedResults = flight.computeDetailedResults()
             runInstance.competition.markCoefficients.eachWithIndex { markCoefficient, y ->
                 def markName = markCoefficient.markDefinition.name
@@ -77,6 +93,11 @@ class ResultRunController {
                     labels["${markName}"] = "${markName}"
                 }
 
+            }
+            expanded_record["Warnings"] =  flight.warnings
+            if (!fields.contains("Warnings")){
+                fields.add("Warnings")
+                labels["Warnings"] = "Warnings"
             }
             expanded_record["Result"] =  roundMark(flight.computeResult(detailedResults))
             if (!fields.contains("Result")){
@@ -93,14 +114,14 @@ class ResultRunController {
 
         params.ACROPYX_COMPETITION = runInstance.competition.toString()
         params.ACROPYX_RUN = runInstance.toString()
-        params.ACROPYX_RESULT = (runInstance.isEnded())? "Final results": "Intermediate results"
+        params.ACROPYX_RESULT = (runInstance.isEnded())? "Final ranking": "Intermediate ranking"
         chain(controller:'jasper',action:'index',model:[data:resultList],params:params)
     }
 
-    def double roundMark(mark) {
-        def decimalFormat = new DecimalFormat("#.###")
+    def  roundMark(mark) {
+        def decimalFormat = new DecimalFormat("0.000")
         decimalFormat.setRoundingMode(RoundingMode.HALF_UP)
-        def markString = decimalFormat.format(mark)
-        return markString as double
+        return decimalFormat.format(mark)
+        //return markString as double
     }
 }

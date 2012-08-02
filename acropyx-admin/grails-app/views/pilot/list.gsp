@@ -29,7 +29,7 @@
                         
                             <g:sortableColumn property="flyingSinceYear" title="${message(code: 'pilot.flyingSinceYear.label', default: 'Flying Since Year')}" />
                         
-                            <g:sortableColumn property="job" title="${message(code: 'pilot.job.label', default: 'Job')}" />
+                            <g:sortableColumn property="civlRank" title="${message(code: 'pilot.civlRank.label', default: 'Rank')}" />
                         
                         </tr>
                     </thead>
@@ -47,7 +47,7 @@
                         
                             <td>${fieldValue(bean: pilotInstance, field: "flyingSinceYear")}</td>
                         
-                            <td>${fieldValue(bean: pilotInstance, field: "job")}</td>
+                            <td>${fieldValue(bean: pilotInstance, field: "civlRank")}</td>
                         
                         </tr>
                     </g:each>

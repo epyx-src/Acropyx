@@ -89,7 +89,14 @@
                                     <g:textField name="glider" value="${pilotInstance?.glider}" />
                                 </td>
                             </tr>
-                        
+                            <tr class="prop">
+                                <td valign="top" class="name">
+                                    <label for="civlRank"><g:message code="pilot.civlRank.label" default="CIVL Ranking" /></label>
+                                </td>
+                                <td valign="top" class="value ${hasErrors(bean: pilotInstance, field: 'civlRank', 'errors')}">
+                                    <g:textField name="civlRank" value="${pilotInstance?.civlRank}" />
+                                </td>
+                            </tr>
                             <tr class="prop">
                                 <td valign="top" class="name">
                                   <label for="sponsor"><g:message code="pilot.sponsor.label" default="Sponsor" /></label>

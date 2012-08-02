@@ -35,21 +35,73 @@ class ResultCompetitionController {
     def show = {
         def competitionInstance = Competition.get(params.id)
 
-        return [competitionInstance: competitionInstance, endedRuns: competitionInstance.findStartedRuns(), competitorResults: competitionInstance.computeResults()]
+        return [competitionInstance: competitionInstance, competitionId: competitionInstance.id,  endedRuns: competitionInstance.findStartedRuns(), competitorResults: competitionInstance.computeResults()]
     }
 
     def reportCompetitionResults = {
 
         def competitionInstance = Competition.get(params.competition_id)
 
-        def runs = competitionInstance.findEndedRuns()
+        def competitionResults = competitionInstance.computeResults()
+
+        def runs = competitionInstance.findStartedRuns()
+
+        def labels = [:]
+        def fields = []
+        def  resultList = []
+        competitionResults.eachWithIndex{ result, i ->
+            //add rank
+            def expanded_record = ["rank": i+1]
+            if (!fields.contains("rank")){
+                fields.add("rank")
+                labels["rank"] = "Rank"
+            }
+            //Add Competitor
+            expanded_record["competitor"] =  result.competitor
+            if (!fields.contains("competitor")){
+                fields.add("competitor")
+                labels["competitor"] = "Competitor"
+            }
+
+            //Add warnings
+            expanded_record["Warnings"] =  result.warnings
+            if (!fields.contains("Warnings")){
+                fields.add("Warnings")
+                labels["Warnings"] = "Warnings"
+            }
+
+            //add overall
+            expanded_record["Result"] =  roundMark(result.overall)
+            if (!fields.contains("Result")){
+                fields.add("Result")
+                labels["Result"] = "Result"
+            }
+
+            //Add Run results
+            runs.eachWithIndex { run, j ->
+                def runResult =  result.flights?.get(run.id)
+                expanded_record["r" + (j+1).toString()] = (runResult)?roundMark(runResult.result):""
+                if (!fields.contains("r" + (j+1).toString())){
+                    fields.add("r" + (j+1).toString())
+                    labels["r" + j.toString()] = (runResult)?"r" + (j+1).toString():""
+                }
+
+            }
+
+            resultList.add expanded_record
+        }
+
+
+        params.ACROPYX_COMPETITION = competitionInstance.toString()
+        params.ACROPYX_RESULT = (competitionInstance.isEnded())? "Final ranking": "Intermediate ranking"
+        chain(controller:'jasper',action:'index',model:[data:resultList],params:params)
 
     }
 
-    def double roundMark(mark) {
-        def decimalFormat = new DecimalFormat("#.###")
+    def  roundMark(mark) {
+        def decimalFormat = new DecimalFormat("0.000")
         decimalFormat.setRoundingMode(RoundingMode.HALF_UP)
-        def markString = decimalFormat.format(mark)
-        return markString as double
+        return decimalFormat.format(mark)
+        //return markString as double
     }
 }

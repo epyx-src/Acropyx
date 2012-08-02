@@ -13,7 +13,7 @@ dataSource {
         driverClassName = "org.postgresql.Driver"
         dialect = org.hibernate.dialect.PostgreSQLDialect
 	username = "acropyx"
-	password = "1234"
+	password = "4cr0pyx.2012"
         //Hasta aqui es con postgresql    
     
 }
