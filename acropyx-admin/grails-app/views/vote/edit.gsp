@@ -35,17 +35,17 @@
                 <table>
                     <thead>
                         <tr>
-                            <th>Marks</th>
-                            <g:each in="${judges}" var="judge">
-	                            <th>${judge}</th>
+                            <th>Judges</th>
+                            <g:each in="${markCoefficients}" var="markCoefficient">
+	                            <th>${markCoefficient}</th>
 	                        </g:each>    
                         </tr>
                     </thead>
                     <tbody>
-                        <g:each in="${markCoefficients}" var="markCoefficient">
+                        <g:each in="${judges}" var="judge">
                             <tr>
-                                <td>${markCoefficient}</td>
-                                <g:each in="${judges}" var="judge">
+                                <td>${judge}</td>
+                                <g:each in="${markCoefficients}" var="markCoefficient">
 	                                <td><g:select class="note" name="Mark_${judge.id}_${markCoefficient.markDefinition.id}" from="${posibleMarks}" value="${this.('Mark_' + judge.id + '_' + markCoefficient.markDefinition.id)}" /></td>
 	                            </g:each>    
                             </tr>    
