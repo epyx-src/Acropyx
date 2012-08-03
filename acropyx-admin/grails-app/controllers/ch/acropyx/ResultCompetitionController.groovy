@@ -64,11 +64,29 @@ class ResultCompetitionController {
             }
 
             //Add warnings
-            expanded_record["Warnings"] =  result.warnings
+            expanded_record["Warnings"] =  (int)result.warnings
             if (!fields.contains("Warnings")){
                 fields.add("Warnings")
                 labels["Warnings"] = "Warnings"
             }
+
+            if (result.competitor instanceof Pilot){
+                def flight_pilot = result.competitor as Pilot
+                def pilot = Pilot.get(flight_pilot.id)
+                expanded_record["Country"] =  pilot.country
+                if (!fields.contains("Country")){
+                    fields.add("Country")
+                    labels["Country"] = "Country"
+                }
+
+                expanded_record["Glider"] =  pilot.glider
+                if (!fields.contains("Glider")){
+                    fields.add("Glider")
+                    labels["Glider"] = "Glider"
+                }
+            }
+
+
 
             //add overall
             expanded_record["Result"] =  roundMark(result.overall)
@@ -85,8 +103,9 @@ class ResultCompetitionController {
                     fields.add("r" + (j+1).toString())
                     labels["r" + j.toString()] = (runResult)?"r" + (j+1).toString():""
                 }
-
+                params["ACROPYX_RUN_TITLE_" + (j+1).toString()]   = run.name
             }
+
 
             resultList.add expanded_record
         }
