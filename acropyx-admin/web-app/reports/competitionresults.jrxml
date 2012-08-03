@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="run-results" language="groovy" printOrder="Horizontal" pageWidth="792" pageHeight="612" orientation="Landscape" columnWidth="752" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="29e04439-0e80-4611-bc91-2cca9c174b6e">
-	<property name="ireport.zoom" value="2.0"/>
-	<property name="ireport.x" value="799"/>
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="63"/>
 	<property name="ireport.y" value="0"/>
 	<parameter name="ACROPYX_COMPETITION" class="java.lang.String"/>
 	<parameter name="ACROPYX_RESULT" class="java.lang.String"/>
@@ -46,9 +46,9 @@
 				<imageExpression><![CDATA["/home/acropyx/Acropyx/acropyx-admin/web-app/reports/acropyx_logo_100.png"]]></imageExpression>
 			</image>
 			<textField>
-				<reportElement uuid="32bbb51d-bfec-4212-9a5a-b334b160314b" x="294" y="27" width="171" height="23"/>
+				<reportElement uuid="32bbb51d-bfec-4212-9a5a-b334b160314b" x="148" y="27" width="477" height="23"/>
 				<textElement textAlignment="Center">
-					<font size="18" isBold="true"/>
+					<font size="16" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{ACROPYX_COMPETITION}]]></textFieldExpression>
 			</textField>
