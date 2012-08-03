@@ -111,7 +111,7 @@ class ResultCompetitionController {
         }
 
 
-        params.ACROPYX_COMPETITION = competitionInstance.toString()
+        params.ACROPYX_COMPETITION = competitionInstance.name
         params.ACROPYX_RESULT = (competitionInstance.isEnded())? "Final ranking": "Intermediate ranking"
         chain(controller:'jasper',action:'index',model:[data:resultList],params:params)
 
