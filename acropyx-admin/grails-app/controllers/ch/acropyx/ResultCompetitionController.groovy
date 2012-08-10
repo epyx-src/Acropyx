@@ -18,6 +18,9 @@ package ch.acropyx
 
 import java.text.DecimalFormat
 import java.math.RoundingMode
+import org.grails.plugins.csv.CSVWriter
+
+
 
 class ResultCompetitionController {
 
@@ -115,6 +118,64 @@ class ResultCompetitionController {
         params.ACROPYX_RESULT = (competitionInstance.isEnded())? "Final ranking": "Intermediate ranking"
         chain(controller:'jasper',action:'index',model:[data:resultList],params:params)
 
+    }
+
+    def exportCompetition = {
+        def competitionInstance = Competition.get(params.id)
+
+        def runs = competitionInstance.findStartedRuns()
+
+        def sw = new StringWriter()
+        def csv = new CSVWriter(sw, {
+           Rank { it.rank }
+           Competitor {it.competitor }
+           Country {it.country}
+           Glider {it.glider}
+           Warnings {it.warnings}
+           runs.each { run ->
+                "${run.name}" {it."${run.name}"}
+            }
+            Result {it.overall }
+        })
+
+
+        def competitionResults = competitionInstance.computeResults()
+
+
+
+
+
+        competitionResults.eachWithIndex{ result, i ->
+            //add rank
+            def values = [:]
+            values.put("rank",  i+1)
+            //Add Competitor
+             values.put("competitor", result.competitor)
+            //Add warnings
+            values.put("warnings", (int)result.warnings)
+
+            if (result.competitor instanceof Pilot){
+                def flight_pilot = result.competitor as Pilot
+                def pilot = Pilot.get(flight_pilot.id)
+                values.put("country", pilot.country)
+                values.put("glider", pilot.glider)
+            }
+            //add overall
+            values.put("overall", roundMark(result.overall))
+            //Add Run results
+           runs.eachWithIndex { run, j ->
+                def runResult =  result.flights?.get(run.id)
+                values.put(run.name, (runResult)?roundMark(runResult.result):"")
+            }
+
+
+            csv << values
+        }
+
+
+        response.setContentType("text/csv")
+        response.setHeader("Content-disposition", "filename=${competitionInstance}.csv")
+        response.outputStream << sw
     }
 
     def  roundMark(mark) {

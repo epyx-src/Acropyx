@@ -8,6 +8,7 @@
         <div class="nav">
             <span class="menuButton"><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></span>
             <span class="menuButton"><a class="admin" href="${createLink(uri: '/admin')}"><g:message code="default.admin.label"/></a></span>
+            <span class="menuButton"><g:link class="list" action="exportCompetition" id="${competitionId}">Export</g:link></span>
             <sec:ifNotLoggedIn>
                 <span class="menuLogin"><a class="login" href="${createLink(uri: '/login')}"><g:message code="default.login.label"/></a></span>
             </sec:ifNotLoggedIn>
@@ -61,6 +62,12 @@
             </div>
 
             <g:jasperReport controller="resultCompetition" action="reportCompetitionResults"  jasper="competitionresults" format="PDF" name="Competition Results">
+                <input type="hidden" name="competition_id" value="${competitionId}"/>
+                <input type="hidden" name="ACROPYX_COMPETITION" value="TEST"/>
+                <input type="hidden" name="ACROPYX_RESULT" value="RESULTS"/>
+            </g:jasperReport>
+
+            <g:jasperReport controller="resultCompetition" action="reportCompetitionResults"  jasper="competitionresults_xls" format="XLS" name="Competition Results">
                 <input type="hidden" name="competition_id" value="${competitionId}"/>
                 <input type="hidden" name="ACROPYX_COMPETITION" value="TEST"/>
                 <input type="hidden" name="ACROPYX_RESULT" value="RESULTS"/>

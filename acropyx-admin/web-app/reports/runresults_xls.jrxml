@@ -15,53 +15,6 @@
 	<field name="Warnings" class="java.lang.String"/>
 	<field name="Country" class="java.lang.String"/>
 	<field name="Glider" class="java.lang.String"/>
-	<background>
-		<band splitType="Stretch"/>
-	</background>
-	<title>
-		<band height="79" splitType="Stretch">
-			<image>
-				<reportElement uuid="338900e8-a211-40d3-84da-ec0c8627d0b7" x="2" y="0" width="119" height="79"/>
-				<imageExpression><![CDATA["/home/yoel/Acropyx/acropyx-admin/web-app/reports/fai_logo_cmyk.png"]]></imageExpression>
-			</image>
-			<textField pattern="MMMMM dd, yyyy">
-				<reportElement uuid="95b8eacc-0730-457e-9b90-16cc6cc13efd" x="639" y="39" width="100" height="20"/>
-				<textElement verticalAlignment="Bottom">
-					<font isBold="true"/>
-				</textElement>
-				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
-			</textField>
-			<image>
-				<reportElement uuid="338900e8-a211-40d3-84da-ec0c8627d0b7" x="639" y="0" width="100" height="33"/>
-				<imageExpression><![CDATA["/home/yoel/Acropyx/acropyx-admin/web-app/reports/acropyx_logo_100.png"]]></imageExpression>
-			</image>
-			<textField>
-				<reportElement uuid="1ef038ea-e23b-482d-a354-516cb7f141fe" x="164" y="19" width="443" height="20"/>
-				<textElement textAlignment="Center">
-					<font size="16" isBold="true"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$P{ACROPYX_COMPETITION}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement uuid="f6d654f0-3494-4e1d-ad60-b8a79f8b8eab" x="221" y="46" width="319" height="20"/>
-				<textElement textAlignment="Center">
-					<font size="14" isBold="true"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$P{ACROPYX_RUN}]]></textFieldExpression>
-			</textField>
-		</band>
-	</title>
-	<pageHeader>
-		<band height="32" splitType="Stretch">
-			<textField>
-				<reportElement uuid="f15dc37a-8397-47f6-9dc1-304c2f431447" x="8" y="12" width="156" height="20"/>
-				<textElement>
-					<font size="12" isBold="true"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$P{ACROPYX_RESULT}]]></textFieldExpression>
-			</textField>
-		</band>
-	</pageHeader>
 	<columnHeader>
 		<band height="39" splitType="Stretch">
 			<staticText>
@@ -171,31 +124,16 @@
 				<textElement textAlignment="Right"/>
 				<textFieldExpression><![CDATA[$F{Warnings}]]></textFieldExpression>
 			</textField>
-			<textField>
+			<textField isBlankWhenNull="true">
 				<reportElement uuid="8639e30b-7439-420d-993e-2ad44c1aef16" x="147" y="4" width="74" height="20"/>
 				<textElement/>
 				<textFieldExpression><![CDATA[$F{Country}]]></textFieldExpression>
 			</textField>
-			<textField>
+			<textField isBlankWhenNull="true">
 				<reportElement uuid="35c6369c-75b4-4026-9035-991d915ee16c" x="234" y="4" width="100" height="20"/>
 				<textElement/>
 				<textFieldExpression><![CDATA[$F{Glider}]]></textFieldExpression>
 			</textField>
 		</band>
 	</detail>
-	<columnFooter>
-		<band height="17" splitType="Stretch"/>
-	</columnFooter>
-	<pageFooter>
-		<band height="20" splitType="Stretch">
-			<textField>
-				<reportElement uuid="c28e0466-0146-4774-8e1b-263649687811" x="231" y="0" width="100" height="20"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle"/>
-				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
-			</textField>
-		</band>
-	</pageFooter>
-	<summary>
-		<band height="12" splitType="Stretch"/>
-	</summary>
 </jasperReport>

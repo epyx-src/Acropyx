@@ -18,6 +18,8 @@ package ch.acropyx
 
 import grails.plugins.springsecurity.Secured
 import org.grails.plugins.csv.CSVWriter
+import java.text.DecimalFormat
+import java.math.RoundingMode
 
 
 class RunController {
@@ -148,8 +150,11 @@ class RunController {
 
             def detailedResults = flight.computeDetailedResults()
             runInstance.competition.markCoefficients.each { markCoefficient ->
-                values.put(markCoefficient.markDefinition.name, detailedResults.get(markCoefficient.id))
+                values.put(markCoefficient.markDefinition.name, roundMark(detailedResults.get(markCoefficient.id)))
             }
+
+            values.put('overall', roundMark(flight.computeResult(detailedResults)))
+
 
             csv << values
         }
@@ -159,51 +164,59 @@ class RunController {
         response.outputStream << sw
     }
     
-     def export_pdf = {
-        def runInstance = Run.get(params.id)
-        def flights = runInstance.findEndedFlights(true)
-        def labels = [:]
-        def fields = []
-
-        response.setContentType("application/pdf") //config.grails.mime.types[pdf]
-        response.setHeader("Content-disposition", "filename= test.pdf")
-
-        def resultList = []
-
-        def maxLocationIndex=0;
-
-        flights.eachWithIndex { flight, i ->
-            def expanded_record = ["rank": i+1]
-            if (!fields.contains("rank")){
-                fields.add("rank")
-                labels["rank"] = "Rank"
-            }
-            expanded_record["competitor"] =  flight.competitor.name
-            if (!fields.contains("competitor")){
-                fields.add("competitor")
-                labels["competitor"] = "Competitor"
-            }
-            def detailedResults = flight.computeDetailedResults()
-            runInstance.competition.markCoefficients.eachWithIndex { markCoefficient, y ->
-                def markName = markCoefficient.markDefinition.name
-                expanded_record["${markName}"] = detailedResults.get(markCoefficient.id)
-                if (!fields.contains("${markName}")){
-                    fields.add("${markName}")
-                    labels["${markName}"] = "${markName}"
-                }
-
-            }
-            resultList.add(expanded_record)
-        }
-
-        exportService.export("pdf", response.outputStream, resultList, fields, labels, [:], [:])
-
-    }
+//     def export_pdf = {
+//        def runInstance = Run.get(params.id)
+//        def flights = runInstance.findEndedFlights(true)
+//        def labels = [:]
+//        def fields = []
+//
+//        response.setContentType("application/pdf") //config.grails.mime.types[pdf]
+//        response.setHeader("Content-disposition", "filename= test.pdf")
+//
+//        def resultList = []
+//
+//        def maxLocationIndex=0;
+//
+//        flights.eachWithIndex { flight, i ->
+//            def expanded_record = ["rank": i+1]
+//            if (!fields.contains("rank")){
+//                fields.add("rank")
+//                labels["rank"] = "Rank"
+//            }
+//            expanded_record["competitor"] =  flight.competitor.name
+//            if (!fields.contains("competitor")){
+//                fields.add("competitor")
+//                labels["competitor"] = "Competitor"
+//            }
+//            def detailedResults = flight.computeDetailedResults()
+//            runInstance.competition.markCoefficients.eachWithIndex { markCoefficient, y ->
+//                def markName = markCoefficient.markDefinition.name
+//                expanded_record["${markName}"] = detailedResults.get(markCoefficient.id)
+//                if (!fields.contains("${markName}")){
+//                    fields.add("${markName}")
+//                    labels["${markName}"] = "${markName}"
+//                }
+//
+//            }
+//            resultList.add(expanded_record)
+//        }
+//
+//        exportService.export("pdf", response.outputStream, resultList, fields, labels, [:], [:])
+//
+//    }
 
      def reportRun = {
 
          def run = Run.list()
          chain(controller:'jasper',action:'index',model:[data:run],params:params)
+    }
+
+    //TODO: Move to utils
+    def  roundMark(mark) {
+        def decimalFormat = new DecimalFormat("0.000")
+        decimalFormat.setRoundingMode(RoundingMode.HALF_UP)
+        return decimalFormat.format(mark)
+        //return markString as double
     }
 
 }

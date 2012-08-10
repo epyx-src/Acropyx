@@ -44,6 +44,7 @@ html {
 	height:100%;
 	background: -webkit-gradient(linear, center top, center bottom, from(#FFC),
 		to(#FFFFFF) );
+    background: -moz-linear-gradient(center top, #FFC, #FFF);
 }
 
 body {
@@ -106,7 +107,8 @@ th {
 	border-style: ridge;
 	background: -webkit-gradient(linear, center top, center bottom, from(#555),
 		to(#777) );
-	color: white;
+    background: -moz-linear-gradient(center top, #555, #777);
+    color: white;
 	padding: 5px;
 	padding-right: 20px;
 	padding-left: 20px;
@@ -144,6 +146,7 @@ td.tete {
 	border: 3px solid #FFF;
 	background: -webkit-gradient(linear, center top, center bottom, from(#CCC),
 		to(#EEE) );
+    background: -moz-linear-gradient(center top, #CCC, #EEE);
 	color: black;
 	padding: 5px;
 	padding-right: 20px;
@@ -182,6 +185,7 @@ td.tete {
 	border-style: ridge;
 	background: -webkit-gradient(linear, center top, center bottom, from(#333),
 		to(#000) );
+    background: -moz-linear-gradient(center top, #333, #000);
     color: white;
 	padding: 5px;
 	padding-right: 20px;

@@ -18,6 +18,13 @@
                 <input type="hidden" name="ACROPYX_RESULT" value="RESULTS"/>
 
             </g:jasperReport>
+            <g:jasperReport controller="resultRun" action="reportRunResults"  jasper="runresults_xls" format="XLS" name="Run-Result">
+                <input type="hidden" name="run_id" value="${runInstance.id}"/>
+                <input type="hidden" name="ACROPYX_COMPETITION" value="TEST"/>
+                <input type="hidden" name="ACROPYX_RUN" value="RUN1"/>
+                <input type="hidden" name="ACROPYX_RESULT" value="RESULTS"/>
+
+            </g:jasperReport>
             %{--<span class="menuButton"><g:link class="list" controller="run" action="export_pdf" id="${runInstance.id}">Export to PDF</g:link></span>--}%
 
             
@@ -64,13 +71,13 @@
                             
                             <% def detailedResults = flight.computeDetailedResults() %>
                             <g:each in="${runInstance.competition.markCoefficients}" var="markCoefficient">
-                                <td><g:formatNumber number="${detailedResults.get(markCoefficient.id)}" format="#.#" roundingMode="HALF_UP" /><span style="color:#CCC"><g:formatNumber number="${detailedResults.get(markCoefficient.id)}" format=" (#.###)" roundingMode="HALF_UP" /></span></td>
+                                <td style="text-align: right;"><g:formatNumber number="${detailedResults.get(markCoefficient.id)}" format="0.000" roundingMode="HALF_UP" /></td>
                             </g:each>
 
                             <td>${flight.warnings}</td>
                             
                             <% def result = flight.computeResult(detailedResults) %>
-                            <td><g:link controller="flight" action="show" id="${flight.id}"><g:formatNumber number="${result}" format="#.#" roundingMode="HALF_UP" /></g:link><span style="color:#CCC"><g:formatNumber number="${result}" format=" (#.###)" roundingMode="HALF_UP" /></span></td>
+                            <td style="text-align: right;"><g:link controller="flight" action="show" id="${flight.id}"><g:formatNumber number="${result}" format="0.000" roundingMode="HALF_UP" /></g:link></td>
                         </tr>
                     </g:each>
                     </tbody>
