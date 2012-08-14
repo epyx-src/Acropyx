@@ -146,7 +146,19 @@ class RunController {
         flights.eachWithIndex { flight, i ->
             def values = [:]
             values.put('rank', i+1)
-            values.put('competitor', flight.competitor.name)
+            if (flight.competitor instanceof Pilot){
+                values.put('competitor', flight.competitor.name)
+            }
+            else{
+                def flight_team = flight.competitor as Team
+                def team = Team.get(flight_team.id)
+                def pilots = team.pilots.asList()
+
+                def pilot1 = pilots.get(0)
+                def pilot2 = pilots.get(1)
+
+                values.put("competitor", team.name + " ( " + pilot1.name + " / " + pilot2.name + " ) ")
+            }
 
             def detailedResults = flight.computeDetailedResults()
             runInstance.competition.markCoefficients.each { markCoefficient ->

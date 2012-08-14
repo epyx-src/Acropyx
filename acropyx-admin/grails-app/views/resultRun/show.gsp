@@ -10,24 +10,19 @@
         <div class="nav">
             <span class="menuButton"><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></span>
             <span class="menuButton"><a class="admin" href="${createLink(uri: '/admin')}"><g:message code="default.admin.label"/></a></span>
-            <span class="menuButton"><g:link class="list" controller="run" action="export" id="${runInstance.id}">Export</g:link></span>
-            <g:jasperReport controller="resultRun" action="reportRunResults"  jasper="runresults" format="PDF" name="PDF">
-                <input type="hidden" name="run_id" value="${runInstance.id}"/>
-                <input type="hidden" name="ACROPYX_COMPETITION" value="TEST"/>
-                <input type="hidden" name="ACROPYX_RUN" value="RUN1"/>
-                <input type="hidden" name="ACROPYX_RESULT" value="RESULTS"/>
+            <span class="menuButton"><g:link class="list" controller="run" action="export" id="${runInstance.id}">Export CSV</g:link></span>
+            <span class="menuButton">
+                <g:jasperReport class="list" controller="resultRun" action="reportRunResults"  jasper="runresults" format="PDF" name="Export PDF" height="16" delimiterBefore=" " delimiterAfter=" " >
+                    <input type="hidden" name="run_id" value="${runInstance.id}"/>
+                    <input type="hidden" name="ACROPYX_COMPETITION" value="TEST"/>
+                    <input type="hidden" name="ACROPYX_RUN" value="RUN1"/>
+                    <input type="hidden" name="ACROPYX_RESULT" value="RESULTS"/>
+                </g:jasperReport>
+            </span>
 
-            </g:jasperReport>
-            <g:jasperReport controller="resultRun" action="reportRunResults"  jasper="runresults_xls" format="XLS" name="Run-Result">
-                <input type="hidden" name="run_id" value="${runInstance.id}"/>
-                <input type="hidden" name="ACROPYX_COMPETITION" value="TEST"/>
-                <input type="hidden" name="ACROPYX_RUN" value="RUN1"/>
-                <input type="hidden" name="ACROPYX_RESULT" value="RESULTS"/>
 
-            </g:jasperReport>
-            %{--<span class="menuButton"><g:link class="list" controller="run" action="export_pdf" id="${runInstance.id}">Export to PDF</g:link></span>--}%
 
-            
+        %{--<span class="menuButton"><a class="list"  id="${runInstance.id}" onclick="">Export to PDF</a></span>--}%
             <sec:ifNotLoggedIn>
                 <span class="menuLogin"><a class="login" href="${createLink(uri: '/login')}"><g:message code="default.login.label"/></a></span>
             </sec:ifNotLoggedIn>

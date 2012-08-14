@@ -40,6 +40,8 @@ class Pilot extends Competitor {
     String glider
     String sponsor
     Integer civlRank
+    Integer civlId
+
 
     static constraints = {
         name(blank: false)
@@ -51,6 +53,7 @@ class Pilot extends Competitor {
         glider(nullable:true)
         sponsor(nullable:true)
         civlRank(nullable:true)
+        civlId(nullable:true)
         picture(nullable:true, maxSize:5000000)
     }
 
@@ -143,7 +146,7 @@ class Pilot extends Competitor {
     }
 
     def String toJSON() {
-        '{' + '"name" : "' + name + '",' + '"country" : "' + toCountryISO3166_1()  + '"' + addAge() + addImageSrc() + addFlyingSince() + addGlider() + addSponsor() + addCivlRank() + addTicker() + '}'
+        '{' + '"name" : "' + name + '",' + '"country" : "' + toCountryISO3166_1()  + '"' + addAge() + addImageSrc() + addFlyingSince() + addGlider() + addSponsor() + addCivlRank() + addCivlId() + addTicker() + '}'
     }
     def String addImageSrc() {
         def result = ''
@@ -200,6 +203,17 @@ class Pilot extends Competitor {
                     civlRank
             ]
             result = ',"ranking" : "' + messageSource.getMessage( 'displayer.pilot.civlRank', args, Locale.default ) + '"'
+        }
+        result
+    }
+
+    def String addCivlId() {
+        def result = ''
+        if ( civlId ) {
+            Object[] args = [
+                    civlId
+            ]
+            result = ',"civlId" : "' + messageSource.getMessage( 'displayer.pilot.civlId', args, Locale.default ) + '"'
         }
         result
     }

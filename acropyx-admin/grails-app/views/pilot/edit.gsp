@@ -80,6 +80,15 @@
                                     <g:textField name="selection" value="${pilotInstance?.selection}" />
                                 </td>
                             </tr>
+
+                            <tr class="prop">
+                                <td valign="top" class="name">
+                                    <label for="civlId"><g:message code="pilot.civlId.label" default="Civl Id" /></label>
+                                </td>
+                                <td valign="top" class="value ${hasErrors(bean: pilotInstance, field: 'civlId', 'errors')}">
+                                    <g:textField name="civlId" value="${pilotInstance?.civlId}" />
+                                </td>
+                            </tr>
                         
                             <tr class="prop">
                                 <td valign="top" class="name">

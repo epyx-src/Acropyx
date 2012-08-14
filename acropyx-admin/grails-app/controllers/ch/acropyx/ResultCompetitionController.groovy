@@ -128,7 +128,8 @@ class ResultCompetitionController {
         def sw = new StringWriter()
         def csv = new CSVWriter(sw, {
            Rank { it.rank }
-           Competitor {it.competitor }
+           CivlId { it.civlId }
+           Competitor { it.competitor }
            Country {it.country}
            Glider {it.glider}
            Warnings {it.warnings}
@@ -159,6 +160,22 @@ class ResultCompetitionController {
                 def pilot = Pilot.get(flight_pilot.id)
                 values.put("country", pilot.country)
                 values.put("glider", pilot.glider)
+                values.put("civlId", pilot.civlId)
+            }
+            else{
+              //Add pilots
+                def flight_team = result.competitor as Team
+                def team = Team.get(flight_team.id)
+                def pilots = team.pilots.asList()
+
+                def pilot1 = pilots.get(0)
+                def pilot2 = pilots.get(1)
+
+                values.put("competitor", team.name + " ( " + pilot1.name + " / " + pilot2.name + " ) ")
+                values.put("country", pilot1.country + " / " + pilot2.country)
+                values.put("glider", pilot1.glider + " / " + pilot2.glider)
+                values.put("civlId", pilot1.civlId + " / " + pilot2.civlId)
+
             }
             //add overall
             values.put("overall", roundMark(result.overall))
@@ -177,6 +194,60 @@ class ResultCompetitionController {
         response.setHeader("Content-disposition", "filename=${competitionInstance}.csv")
         response.outputStream << sw
     }
+
+//    def exportCompetitionSync = {
+//        def competitionInstance = Competition.get(params.id)
+//
+//        def runs = competitionInstance.findStartedRuns()
+//
+//        def sw = new StringWriter()
+//        def csv = new CSVWriter(sw, {
+//            Rank { it.rank }
+//            Team { it.competitor }
+//            Pilot1 { it.pilot1 }
+//            Pilot2 { it.pilot2 }
+//            Warnings {it.warnings}
+//            runs.each { run ->
+//                "${run.name}" {it."${run.name}"}
+//            }
+//            Result {it.overall }
+//        })
+//
+//
+//        def competitionResults = competitionInstance.computeResults()
+//
+//        competitionResults.eachWithIndex{ result, i ->
+//            //add rank
+//            def values = [:]
+//            values.put("rank",  i+1)
+//            //Add Competitor
+//            values.put("competitor", result.competitor)
+//            //Add warnings
+//            values.put("warnings", (int)result.warnings)
+//
+//            //Add pilots
+//            def flight_team = result.competitor as Team
+//            def team = Team.get(flight_team.id)
+//            values.put("pilot1", team.pilots[0].name + "(" + team.pilots[0].civlId +")")
+//            values.put("pilot2", team.pilots[1].name + "(" + team.pilots[1].civlId +")")
+//
+//            //add overall
+//            values.put("overall", roundMark(result.overall))
+//            //Add Run results
+//            runs.eachWithIndex { run, j ->
+//                def runResult =  result.flights?.get(run.id)
+//                values.put(run.name, (runResult)?roundMark(runResult.result):"")
+//            }
+//
+//            csv << values
+//        }
+//
+//
+//        response.setContentType("text/csv")
+//        response.setHeader("Content-disposition", "filename=${competitionInstance}.csv")
+//        response.outputStream << sw
+//    }
+
 
     def  roundMark(mark) {
         def decimalFormat = new DecimalFormat("0.000")

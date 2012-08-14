@@ -102,7 +102,7 @@ input:focus, select:focus, textarea:focus {
 
 .menuButton {
     font-size: 10px;
-    padding: 0 5px;
+    padding: 2px 5px;
 }
 .menuButton a {
     color: #333;

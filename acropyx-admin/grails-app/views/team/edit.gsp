@@ -50,7 +50,7 @@
                                   <label for="pilots"><g:message code="team.pilots.label" default="Pilots" /></label>
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean: teamInstance, field: 'pilots', 'errors')}">
-                                    <g:select name="pilots" from="${ch.acropyx.Pilot.list()}" multiple="yes" optionKey="id" size="5" value="${teamInstance?.pilots*.id}" />
+                                    <g:select name="pilots" from="${ch.acropyx.Pilot.listOrderByName()}" multiple="yes" optionKey="id" size="20"  value="${teamInstance?.pilots*.id}" />
                                 </td>
                             </tr>
                         

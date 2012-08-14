@@ -336,9 +336,10 @@
                                   %{--<a id="endFlight" onclick="endFlight(${flightInstance.id});">END</a>--}%
 	                                <g:form action="endFlight" id="${flightInstance.id}">
                                           %{--<a id="endFlight1" onclick="endFlight(${flightInstance.id});">END</a>--}%
-	                                    <g:submitButton name="End" onclick="return confirm('Are sure you sure you want to end the flight ?')"/>
+	                                    %{--<g:submitButton name="End" onclick="return confirm('Are sure you sure you want to end the flight ?')"/>--}%
+                                        <g:submitButton name="End" />
                                         <br/>
-                                        <g:checkBox name="displayFlightRanking" checked="false" title="Display Ranking"></g:checkBox>
+                                        <g:checkBox name="displayFlightRanking" checked="true" title="Display Ranking"></g:checkBox>
                                         <label>Display Ranking</label>
 
 	                                 </g:form>

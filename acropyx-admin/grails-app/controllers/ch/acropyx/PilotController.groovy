@@ -33,7 +33,7 @@ class PilotController {
 
     def list = {
         params.max = Math.min(params.max ? params.int('max') : 100, 200)
-        [pilotInstanceList: Pilot.list(params), pilotInstanceTotal: Pilot.count()]
+        [pilotInstanceList: Pilot.listOrderByName(params), pilotInstanceTotal: Pilot.count()]
     }
 
     @Secured(['ROLE_ADMIN'])

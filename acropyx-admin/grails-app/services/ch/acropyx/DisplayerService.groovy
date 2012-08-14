@@ -199,6 +199,18 @@ class DisplayerService {
             if ( competitor instanceof Pilot ) {
                 json += ', "country" : "' + competitor.toCountryISO3166_1() + '"'
             }
+            else{
+                def team = competitor as Team
+                def pilots  = team.pilots.toList()
+                def pilot1 = pilots.get(0)
+                def pilot2 = pilots.get(1)
+
+                json += ', "pilot1" : "' + pilot1.name + '"'
+                json += ', "pilot2" : "' + pilot2.name + '"'
+                json += ', "country1" : "' + pilot1.toCountryISO3166_1() + '"'
+                json += ', "country2" : "' + pilot2.toCountryISO3166_1() + '"'
+            }
+
             json += '}'
             if (i < competitors.size() -1) {
                 json += ','
@@ -215,6 +227,18 @@ class DisplayerService {
             json += '{ "name" : "' + flight.competitor.name + '", "warnings" : '  + flight.warnings + ', "mark" : "' + roundResult(flight.computeResult(flight.computeDetailedResults()))    + '"'
             if ( flight.competitor instanceof Pilot ) {
                 json += ', "country" : "' + flight.competitor.toCountryISO3166_1() + '"'
+            }
+            else{
+                def team = flight.competitor as Team
+                def pilots  = team.pilots.toList()
+                def pilot1 = pilots.get(0)
+                def pilot2 = pilots.get(1)
+
+                json += ', "pilot1" : "' + pilot1.name + '"'
+                json += ', "pilot2" : "' + pilot2.name + '"'
+                json += ', "country1" : "' + pilot1.toCountryISO3166_1() + '"'
+                json += ', "country2" : "' + pilot2.toCountryISO3166_1() + '"'
+
             }
 
             json += '}'
@@ -234,6 +258,19 @@ class DisplayerService {
             if (result.competitor instanceof Pilot) {
                 json += ', "country" : "' + result.competitor.toCountryISO3166_1() + '"'
             }
+            else{
+                def team = result.competitor as Team
+                def pilots  = team.pilots.toList()
+                def pilot1 = pilots.get(0)
+                def pilot2 = pilots.get(1)
+
+                json += ', "pilot1" : "' + pilot1.name + '"'
+                json += ', "pilot2" : "' + pilot2.name + '"'
+                json += ', "country1" : "' + pilot1.toCountryISO3166_1() + '"'
+                json += ', "country2" : "' + pilot2.toCountryISO3166_1() + '"'
+
+            }
+
             json += '}'
             if (i < results.size() -1) {
                 json += ','

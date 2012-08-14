@@ -31,6 +31,20 @@
                             <td valign="top" class="value">${fieldValue(bean: pilotInstance, field: "name")}</td>
                             
                         </tr>
+
+                        <tr class="prop">
+                            <td valign="top" class="name"><g:message code="pilot.civlRank.label" default="Civl Rank" /></td>
+
+                            <td valign="top" class="value">${fieldValue(bean: pilotInstance, field: "civlRank")}</td>
+
+                        </tr>
+
+                        <tr class="prop">
+                            <td valign="top" class="name"><g:message code="pilot.civlId.label" default="Civl Id" /></td>
+
+                            <td valign="top" class="value">${fieldValue(bean: pilotInstance, field: "civlId")}</td>
+
+                        </tr>
                     
                         <tr class="prop">
                             <td valign="top" class="name"><g:message code="pilot.country.label" default="Country" /></td>

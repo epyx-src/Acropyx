@@ -100,7 +100,7 @@ class Run implements Comparable {
         def endedRuns = competition.findEndedRuns()
         if (endedRuns.length == 0)
         {  //First Run
-            return Pilot.list.sort(it.selection)
+            return Pilot.list.sort(it.civlRank)
         }
 
         def  pilots = []
