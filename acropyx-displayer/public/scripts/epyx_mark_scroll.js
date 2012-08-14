@@ -50,10 +50,10 @@ var epyxMarkTableScroll = function() {
 
         //Check sync
         var syncHeight = 1;
-        if (list[0].pilot1 != null)
-        {
-            syncHeight = 2 //* rowHeight;
-        }
+//        if (list[0].pilot1 != null)
+//        {
+//            syncHeight = 2 //* rowHeight;
+//        }
 
 
 		canvas.width = canvas.clientWidth;
@@ -85,10 +85,10 @@ var epyxMarkTableScroll = function() {
 		var y = py;
 //        //Check sync
         var syncHeight = 1
-        if (list[0].pilot1 != null)
-        {
-            syncHeight = 1.5; // * rowHeight;
-        }
+//        if (list[0].pilot1 != null)
+//        {
+//            syncHeight = 1.5; // * rowHeight;
+//        }
 		var h = syncHeight * rowHeight;
        // var h =  rowHeight;
 		for ( var i = 0; i < list.length; i++) {
@@ -117,10 +117,10 @@ var epyxMarkTableScroll = function() {
 		context.save();
 
         var syncHeight  = 1;
-        if (row.pilot1 != null)
-        {
-            syncHeight  = 1.5;
-        }
+//        if (row.pilot1 != null)
+//        {
+//            syncHeight  = 1.5;
+//        }
 
 		var my_gradient = context.createLinearGradient(x, y, x, y+h );
 		my_gradient.addColorStop(0, "#CCC");
@@ -229,52 +229,52 @@ var epyxMarkTableScroll = function() {
 
 
 
-        if (row.pilot1 != null)
-        {
-            if ( row.country1 ) {
-                var flag = new Image();
-                flag.src = getCountryImageSrc(row.country1);
-                flag.onload = function() {
-                    var posX = -mark_width-60;
-
-                    context.save();
-                    context.shadowOffsetX = 3;
-                    context.shadowOffsetY = 3;
-                    context.shadowColor = "rgba(0,0,0,0.3)";
-                    context.shadowBlur = 5;
-                    //context.drawImage(flag,x+w+posX+3,y+3,rowHeight-17,rowHeight-17);
-                    context.drawImage(flag,x+nb_width+12,y + 40 +6,rowHeight-17,rowHeight-17);
-
-                    context.restore();
-                };
-            }
-
-            context.fillStyle = "#333";
-            context.textAlign = "left";
-            context.font = fontStyle;
-
-            context.fillText(row.pilot1, x+nb_width+flag_width_sync+14, textLineY + 40);
-
-            if ( row.country2 ) {
-                var flag = new Image();
-                flag.src = getCountryImageSrc(row.country2);
-                flag.onload = function() {
-                    var posX = -mark_width-60;
-
-                    context.save();
-                    context.shadowOffsetX = 3;
-                    context.shadowOffsetY = 3;
-                    context.shadowColor = "rgba(0,0,0,0.3)";
-                    context.shadowBlur = 5;
-                    //context.drawImage(flag,x+w+posX+3,y+3,rowHeight-17,rowHeight-17);
-                    context.drawImage(flag,x+nb_width+12 + 370,y+ 40 + 6,rowHeight-17,rowHeight-17);
-
-                    context.restore();
-                };
-            }
-
-            context.fillText(row.pilot2, x+nb_width+flag_width_sync+14 + 370, textLineY + 40);
-        }
+//        if (row.pilot1 != null)
+//        {
+//            if ( row.country1 ) {
+//                var flag = new Image();
+//                flag.src = getCountryImageSrc(row.country1);
+//                flag.onload = function() {
+//                    var posX = -mark_width-60;
+//
+//                    context.save();
+//                    context.shadowOffsetX = 3;
+//                    context.shadowOffsetY = 3;
+//                    context.shadowColor = "rgba(0,0,0,0.3)";
+//                    context.shadowBlur = 5;
+//                    //context.drawImage(flag,x+w+posX+3,y+3,rowHeight-17,rowHeight-17);
+//                    context.drawImage(flag,x+nb_width+12,y + 40 +6,rowHeight-17,rowHeight-17);
+//
+//                    context.restore();
+//                };
+//            }
+//
+//            context.fillStyle = "#333";
+//            context.textAlign = "left";
+//            context.font = fontStyle;
+//
+//            context.fillText(row.pilot1, x+nb_width+flag_width_sync+14, textLineY + 40);
+//
+//            if ( row.country2 ) {
+//                var flag = new Image();
+//                flag.src = getCountryImageSrc(row.country2);
+//                flag.onload = function() {
+//                    var posX = -mark_width-60;
+//
+//                    context.save();
+//                    context.shadowOffsetX = 3;
+//                    context.shadowOffsetY = 3;
+//                    context.shadowColor = "rgba(0,0,0,0.3)";
+//                    context.shadowBlur = 5;
+//                    //context.drawImage(flag,x+w+posX+3,y+3,rowHeight-17,rowHeight-17);
+//                    context.drawImage(flag,x+nb_width+12 + 370,y+ 40 + 6,rowHeight-17,rowHeight-17);
+//
+//                    context.restore();
+//                };
+//            }
+//
+//            context.fillText(row.pilot2, x+nb_width+flag_width_sync+14 + 370, textLineY + 40);
+//        }
 
 
 		//---------- draw flag ------------

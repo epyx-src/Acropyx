@@ -11,14 +11,27 @@
             <span class="menuButton"><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></span>
             <span class="menuButton"><a class="admin" href="${createLink(uri: '/admin')}"><g:message code="default.admin.label"/></a></span>
             <span class="menuButton"><g:link class="list" controller="run" action="export" id="${runInstance.id}">Export CSV</g:link></span>
-            <span class="menuButton">
-                <g:jasperReport class="list" controller="resultRun" action="reportRunResults"  jasper="runresults" format="PDF" name="Export PDF" height="16" delimiterBefore=" " delimiterAfter=" " >
-                    <input type="hidden" name="run_id" value="${runInstance.id}"/>
-                    <input type="hidden" name="ACROPYX_COMPETITION" value="TEST"/>
-                    <input type="hidden" name="ACROPYX_RUN" value="RUN1"/>
-                    <input type="hidden" name="ACROPYX_RESULT" value="RESULTS"/>
-                </g:jasperReport>
-            </span>
+            <g:if test="${isSolo}">
+                <span class="menuButton">
+                    <g:jasperReport class="list" controller="resultRun" action="reportRunResults"  jasper="runresults" format="PDF" name="Export PDF" height="16" delimiterBefore=" " delimiterAfter=" " >
+                        <input type="hidden" name="run_id" value="${runInstance.id}"/>
+                        <input type="hidden" name="ACROPYX_COMPETITION" value="TEST"/>
+                        <input type="hidden" name="ACROPYX_RUN" value="RUN1"/>
+                        <input type="hidden" name="ACROPYX_RESULT" value="RESULTS"/>
+                    </g:jasperReport>
+                </span>
+           </g:if>
+            <g:else>
+                <span class="menuButton">
+                    <g:jasperReport class="list" controller="resultRun" action="reportRunResults"  jasper="runresultsSync" format="PDF" name="Export PDF Sync" height="16" delimiterBefore=" " delimiterAfter=" " >
+                        <input type="hidden" name="run_id" value="${runInstance.id}"/>
+                        <input type="hidden" name="ACROPYX_COMPETITION" value="TEST"/>
+                        <input type="hidden" name="ACROPYX_RUN" value="RUN1"/>
+                        <input type="hidden" name="ACROPYX_RESULT" value="RESULTS"/>
+                    </g:jasperReport>
+                </span>
+            </g:else>
+
 
 
 

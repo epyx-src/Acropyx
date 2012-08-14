@@ -264,10 +264,18 @@ class DisplayerService {
                 def pilot1 = pilots.get(0)
                 def pilot2 = pilots.get(1)
 
-                json += ', "pilot1" : "' + pilot1.name + '"'
-                json += ', "pilot2" : "' + pilot2.name + '"'
-                json += ', "country1" : "' + pilot1.toCountryISO3166_1() + '"'
-                json += ', "country2" : "' + pilot2.toCountryISO3166_1() + '"'
+                if (pilot1.name.size() > pilot2.name.size())
+                {
+                    json += ', "pilot1" : "' + pilot1.name + '"'
+                    json += ', "pilot2" : "' + pilot2.name + '"'
+                    json += ', "country1" : "' + pilot1.toCountryISO3166_1() + '"'
+                    json += ', "country2" : "' + pilot2.toCountryISO3166_1() + '"'
+                }else{
+                    json += ', "pilot1" : "' + pilot2.name + '"'
+                    json += ', "pilot2" : "' + pilot1.name + '"'
+                    json += ', "country1" : "' + pilot2.toCountryISO3166_1() + '"'
+                    json += ', "country2" : "' + pilot1.toCountryISO3166_1() + '"'
+                }
 
             }
 

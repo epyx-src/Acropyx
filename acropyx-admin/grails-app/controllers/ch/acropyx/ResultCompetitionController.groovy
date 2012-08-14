@@ -37,8 +37,8 @@ class ResultCompetitionController {
 
     def show = {
         def competitionInstance = Competition.get(params.id)
-
-        return [competitionInstance: competitionInstance, competitionId: competitionInstance.id,  endedRuns: competitionInstance.findStartedRuns(), competitorResults: competitionInstance.computeResults()]
+        def isSolo = (competitionInstance.type == Competition.Type.Solo)
+        return [competitionInstance: competitionInstance, isSolo: isSolo, competitionId: competitionInstance.id,  endedRuns: competitionInstance.findStartedRuns(), competitorResults: competitionInstance.computeResults()]
     }
 
     def reportCompetitionResults = {
@@ -88,6 +88,52 @@ class ResultCompetitionController {
                     labels["Glider"] = "Glider"
                 }
             }
+            else{
+                def team= result.competitor as Team
+                def pilot = team.pilots.asList().get(0);
+                def pilot1 = team.pilots.asList().get(1);
+
+
+                expanded_record["Pilot"] =  pilot.name
+                if (!fields.contains("Pilot")){
+                    fields.add("Pilot")
+                    labels["Pilot"] = "Pilot"
+                }
+
+                expanded_record["Country"] =  pilot.country
+                if (!fields.contains("Country")){
+                    fields.add("Country")
+                    labels["Country"] = "Country"
+                }
+
+                expanded_record["Glider"] =  pilot.glider
+                if (!fields.contains("Glider")){
+                    fields.add("Glider")
+                    labels["Glider"] = "Glider"
+                }
+
+                expanded_record["Pilot1"] =  pilot1.name
+                if (!fields.contains("Pilot1")){
+                    fields.add("Pilot1")
+                    labels["Pilot1"] = "Pilot1"
+                }
+
+                expanded_record["Country1"] =  pilot1.country
+                if (!fields.contains("Country1")){
+                    fields.add("Country1")
+                    labels["Country1"] = "Country1"
+                }
+
+                expanded_record["Glider1"] =  pilot1.glider
+                if (!fields.contains("Glider1")){
+                    fields.add("Glider1")
+                    labels["Glider1"] = "Glider1"
+                }
+
+            }
+
+
+
 
 
 
@@ -115,7 +161,7 @@ class ResultCompetitionController {
 
 
         params.ACROPYX_COMPETITION = competitionInstance.name
-        params.ACROPYX_RESULT = (competitionInstance.isEnded())? "Final ranking": "Intermediate ranking"
+        params.ACROPYX_RESULT = (competitionInstance.isEnded())? "Final overall ranking": "Intermediate results"
         chain(controller:'jasper',action:'index',model:[data:resultList],params:params)
 
     }
@@ -136,7 +182,7 @@ class ResultCompetitionController {
            runs.each { run ->
                 "${run.name}" {it."${run.name}"}
             }
-            Result {it.overall }
+            Total {it.overall }
         })
 
 
