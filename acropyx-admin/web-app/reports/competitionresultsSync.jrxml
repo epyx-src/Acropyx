@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="run-results" language="groovy" printOrder="Horizontal" pageWidth="792" pageHeight="612" orientation="Landscape" columnWidth="752" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="29e04439-0e80-4611-bc91-2cca9c174b6e">
 	<property name="ireport.zoom" value="3.0"/>
-	<property name="ireport.x" value="1696"/>
+	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="292"/>
 	<parameter name="ACROPYX_COMPETITION" class="java.lang.String"/>
 	<parameter name="ACROPYX_RESULT" class="java.lang.String"/>
@@ -167,7 +167,7 @@
 				<textElement textAlignment="Right"/>
 				<textFieldExpression><![CDATA[$F{rank}]]></textFieldExpression>
 			</textField>
-			<textField>
+			<textField isBlankWhenNull="true">
 				<reportElement uuid="524fb11a-63bd-4e0f-911b-d72ac7570bca" x="45" y="4" width="119" height="20"/>
 				<textElement/>
 				<textFieldExpression><![CDATA[$F{competitor}]]></textFieldExpression>
@@ -180,7 +180,7 @@
 				<textFieldExpression><![CDATA[$F{Result}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
-				<reportElement uuid="8639e30b-7439-420d-993e-2ad44c1aef16" x="298" y="4" width="27" height="20"/>
+				<reportElement uuid="8639e30b-7439-420d-993e-2ad44c1aef16" x="297" y="4" width="27" height="20"/>
 				<textElement textAlignment="Center"/>
 				<textFieldExpression><![CDATA[$F{Country}.toUpperCase()]]></textFieldExpression>
 			</textField>
@@ -219,22 +219,22 @@
 				<textElement/>
 				<textFieldExpression><![CDATA[$F{Warnings}]]></textFieldExpression>
 			</textField>
-			<textField>
+			<textField isBlankWhenNull="true">
 				<reportElement uuid="0ce673a7-59c7-4008-90a8-4ecafa507fdb" x="171" y="5" width="119" height="20"/>
 				<textElement/>
 				<textFieldExpression><![CDATA[$F{Pilot}]]></textFieldExpression>
 			</textField>
-			<textField>
+			<textField isBlankWhenNull="true">
 				<reportElement uuid="bcc1d27d-348f-4a54-96f9-4937f7e675cd" x="172" y="26" width="118" height="20"/>
 				<textElement/>
 				<textFieldExpression><![CDATA[$F{Pilot1}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-				<reportElement uuid="2a44eae5-c527-477b-96c6-86c7c68de968" x="298" y="26" width="27" height="20"/>
+				<reportElement uuid="2a44eae5-c527-477b-96c6-86c7c68de968" x="297" y="26" width="27" height="20"/>
 				<textElement textAlignment="Center"/>
 				<textFieldExpression><![CDATA[$F{Country1}.toUpperCase()]]></textFieldExpression>
 			</textField>
-			<textField>
+			<textField isBlankWhenNull="true">
 				<reportElement uuid="94a5e367-3d28-4a07-902a-7dc6ff87387b" x="343" y="26" width="95" height="20"/>
 				<textElement/>
 				<textFieldExpression><![CDATA[$F{Glider1}]]></textFieldExpression>
