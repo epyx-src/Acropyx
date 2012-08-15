@@ -126,6 +126,12 @@ class DisplayerService {
                 body : json,
                 requestContentType : ContentType.JSON,
                 headers : ["Tenant": tenant] )
+
+        sleep(15000)
+
+        resultRun(tenant, flight.run)
+
+
     }
 
     def void resultRun(String tenant, Run run) {
