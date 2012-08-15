@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="run-results" language="groovy" printOrder="Horizontal" pageWidth="792" pageHeight="612" orientation="Landscape" columnWidth="752" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="29e04439-0e80-4611-bc91-2cca9c174b6e">
 	<property name="ireport.zoom" value="1.5"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="0"/>
+	<property name="ireport.y" value="96"/>
 	<parameter name="ACROPYX_COMPETITION" class="java.lang.String"/>
 	<parameter name="ACROPYX_RUN" class="java.lang.String"/>
 	<parameter name="ACROPYX_RESULT" class="java.lang.String"/>
@@ -84,28 +84,28 @@
 				<text><![CDATA[Team]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="0abd40a2-cc55-4aef-b7ef-62e4830395fd" x="462" y="18" width="45" height="20"/>
+				<reportElement uuid="0abd40a2-cc55-4aef-b7ef-62e4830395fd" x="465" y="18" width="45" height="20"/>
 				<textElement textAlignment="Center" verticalAlignment="Bottom">
 					<font size="12" isBold="false"/>
 				</textElement>
 				<text><![CDATA[Choreo]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="fb1fc95b-2634-4675-bdbb-ff58f52f95a3" x="513" y="18" width="59" height="20"/>
+				<reportElement uuid="fb1fc95b-2634-4675-bdbb-ff58f52f95a3" x="516" y="18" width="59" height="20"/>
 				<textElement textAlignment="Center" verticalAlignment="Bottom">
 					<font size="12"/>
 				</textElement>
 				<text><![CDATA[Landing]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="fb1fc95b-2634-4675-bdbb-ff58f52f95a3" x="701" y="19" width="44" height="20"/>
+				<reportElement uuid="fb1fc95b-2634-4675-bdbb-ff58f52f95a3" x="704" y="19" width="44" height="20"/>
 				<textElement textAlignment="Center" verticalAlignment="Bottom">
 					<font size="12" isBold="false"/>
 				</textElement>
 				<text><![CDATA[Total]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="fb1fc95b-2634-4675-bdbb-ff58f52f95a3" x="632" y="19" width="68" height="20"/>
+				<reportElement uuid="fb1fc95b-2634-4675-bdbb-ff58f52f95a3" x="635" y="19" width="68" height="20"/>
 				<textElement textAlignment="Center" verticalAlignment="Bottom">
 					<font size="12" isBold="false"/>
 				</textElement>
@@ -133,7 +133,7 @@
 				<text><![CDATA[Pilot]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="fb1fc95b-2634-4675-bdbb-ff58f52f95a3" x="577" y="18" width="55" height="20"/>
+				<reportElement uuid="fb1fc95b-2634-4675-bdbb-ff58f52f95a3" x="580" y="18" width="55" height="20"/>
 				<textElement textAlignment="Center" verticalAlignment="Bottom">
 					<font size="12"/>
 				</textElement>
@@ -179,7 +179,7 @@
 				<textFieldExpression><![CDATA[$F{Landing}]]></textFieldExpression>
 			</textField>
 			<textField pattern="###0.0">
-				<reportElement uuid="67a38189-d5bf-4876-bad4-9afc6dad5ccd" x="683" y="4" width="57" height="20"/>
+				<reportElement uuid="67a38189-d5bf-4876-bad4-9afc6dad5ccd" x="685" y="4" width="57" height="20"/>
 				<textElement textAlignment="Right">
 					<font isBold="false"/>
 				</textElement>
@@ -195,17 +195,17 @@
 				<textElement textAlignment="Center"/>
 				<textFieldExpression><![CDATA[$F{Country}.toUpperCase()]]></textFieldExpression>
 			</textField>
-			<textField>
+			<textField isBlankWhenNull="true">
 				<reportElement uuid="35c6369c-75b4-4026-9035-991d915ee16c" x="311" y="4" width="101" height="20"/>
 				<textElement/>
 				<textFieldExpression><![CDATA[$F{Glider}]]></textFieldExpression>
 			</textField>
-			<textField>
+			<textField isBlankWhenNull="true">
 				<reportElement uuid="bc9d4016-8f5a-45c1-860a-ecf2c1172989" x="147" y="4" width="114" height="20"/>
 				<textElement/>
 				<textFieldExpression><![CDATA[$F{Pilot}]]></textFieldExpression>
 			</textField>
-			<textField>
+			<textField isBlankWhenNull="true">
 				<reportElement uuid="430ddce7-d2d3-4a20-84c1-54971bea1c98" x="147" y="28" width="114" height="20"/>
 				<textElement/>
 				<textFieldExpression><![CDATA[$F{Pilot1}]]></textFieldExpression>
@@ -215,7 +215,7 @@
 				<textElement textAlignment="Center"/>
 				<textFieldExpression><![CDATA[$F{Country1}.toUpperCase()]]></textFieldExpression>
 			</textField>
-			<textField>
+			<textField isBlankWhenNull="true">
 				<reportElement uuid="943e1e09-81ab-401f-9c84-410b824389ed" x="310" y="28" width="102" height="20"/>
 				<textElement/>
 				<textFieldExpression><![CDATA[$F{Glider1}]]></textFieldExpression>
