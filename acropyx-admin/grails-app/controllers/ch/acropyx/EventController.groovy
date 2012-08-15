@@ -235,10 +235,7 @@ class EventController {
             try {
                 if ((flightInstance.marks?.size() > 0) && (flightInstance.manoeuvres?.size() > 0)) {
                     flightInstance.end()
-
-                    if (params.displayFlightRanking){
-                        displayerService.flightHasEnded(getTenantName(), flightInstance)
-                    }
+                    displayerService.flightHasEnded(getTenantName(), flightInstance, params.displayFlightRanking)
                     return  redirect(controller: "resultRun", id:flightInstance.run.id)
                    // def runId =  flightInstance.run.id
                    // def competitionId = flightInstance.competition.id

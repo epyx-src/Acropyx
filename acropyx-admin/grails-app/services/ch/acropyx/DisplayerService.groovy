@@ -108,7 +108,7 @@ class DisplayerService {
                 headers : ["Tenant": tenant] )
     }
 
-    def void flightHasEnded(String tenant, Flight flight) {
+    def void flightHasEnded(String tenant, Flight flight, showResult) {
         Object[] args = [
             flight.run.competition.name,
             flight.run.name
@@ -127,9 +127,11 @@ class DisplayerService {
                 requestContentType : ContentType.JSON,
                 headers : ["Tenant": tenant] )
 
-        sleep(15000)
 
-        resultRun(tenant, flight.run)
+        if (showResult){
+            sleep(20000)
+            resultRun(tenant, flight.run)
+        }
 
 
     }
