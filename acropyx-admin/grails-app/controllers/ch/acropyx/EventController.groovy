@@ -371,7 +371,7 @@ class EventController {
             if (flight.isActive()) {
                 displayerService.flightHasStarted(getTenantName(), flight)
             } else {
-                displayerService.flightHasEnded(getTenantName(), flight)
+                displayerService.flightHasEnded(getTenantName(), flight, false)
             }
         }
         else {

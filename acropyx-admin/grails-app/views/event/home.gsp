@@ -415,7 +415,7 @@
                         <div>
                             <g:form action="sendFlightToDisplay">
                                 <g:select name="id"
-                                        from="${ch.acropyx.Flight.findAllByStartTimeIsNotNull()}"
+                                        from="${ch.acropyx.Flight.findAllByStartTimeIsNotNull(sort:'startTime', order:'desc')}"
                                         optionKey="id" value="${activeFlight?.id}" noSelection="['': '-- Choose a flight --']" 
                                         
                                         />

@@ -3,5 +3,6 @@
 	"Choreography": "Choreography",
 	"Landing": "Landing",
 	"Result": "Result",
-	"Synchronization": "Synchronization"
+	"Synchronization": "Synchronization",
+	"TOTAL POINTS": "TOTAL POINTS"
 }

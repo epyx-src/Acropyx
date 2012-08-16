@@ -119,7 +119,7 @@ class DisplayerService {
         def json = '{ "name" : "' + name + '", "' + (isPilot ? 'competitor' : 'team' ) + '" : ' + competitor.toJSON()
         def detailedResults = flight.computeDetailedResults()
         json += ', "marks" : ' + generateDetailedResults(detailedResults)
-        json += ', "overall" : { "kind" : "Result", "value" : "' + roundResult(flight.computeResult(detailedResults)) + '"}'
+        json += ', "overall" : { "kind" : "TOTAL POINTS", "value" : "' + roundResult(flight.computeResult(detailedResults)) + '"}'
         json += ', "warnings" : ' + flight.warnings
         json += ', "rank" : "' + generateRank(flight) + '."}'
         def resp = restClient.post( path : (isPilot ? 'resultFlightSolo' : 'resultFlightTeam'),
