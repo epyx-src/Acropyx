@@ -272,3 +272,10 @@ img.waiting {
 	
 	-webkit-box-shadow: 10px 15px 20px #000;
 }
+
+#sponsors_logos {
+    width: 100%;
+    height:100%;
+    background: top left url(images/sponsors.jpg) no-repeat;
+
+}

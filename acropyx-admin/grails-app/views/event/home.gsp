@@ -422,6 +422,11 @@
                                 <g:submitButton name="Send flight to display" />
                             </g:form>
                         </div>
+                          <div>
+                              <g:form action="sendSponsorsToDisplay">
+                                  <g:submitButton name="Competition Logo to display" />
+                              </g:form>
+                          </div>
                     </td>
                 </tr>
             </table>        

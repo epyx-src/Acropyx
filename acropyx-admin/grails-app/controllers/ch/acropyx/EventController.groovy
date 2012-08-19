@@ -379,4 +379,9 @@ class EventController {
         }
         redirect(action: "home")
     }
+
+    def sendSponsorsToDisplay ={
+        displayerService.showSponsors(getTenantName())
+        redirect(action: "home")
+    }
 }
