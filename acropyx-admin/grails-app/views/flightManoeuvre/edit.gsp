@@ -146,6 +146,9 @@
 								</td>
 							</tr>
 					    </table>
+                        <g:if test="${goHome}">
+                            <input type="hidden" id="goHome" name="goHome" value="${goHome}"/>
+                        </g:if>
 					    <g:submitButton name="Save" />
                         </g:form>  				    
 				    </td>	    

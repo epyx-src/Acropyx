@@ -38,10 +38,13 @@ class VoteController {
             def markCoefficients = flightInstance.run.competition.markCoefficients
             def judges = flightInstance.run.competition.judges
 
+            //def goHome = (params.goHome != null)?params.goHome:0;
+
             def model = [flightInstance: flightInstance,
                         judges: judges,
                         markCoefficients: markCoefficients,
-                        posibleMarks: posibleMarks]
+                        posibleMarks: posibleMarks,
+                        goHome: params.goHome]
 
             judges.each() { judge ->
                 markCoefficients.each() { markCoefficient ->
@@ -77,6 +80,16 @@ class VoteController {
                 }
                 mark.save()
             }
+        }
+
+        if (flightInstance.manoeuvres?.size() == 0)
+        {
+           return redirect(controller: "flightManoeuvre", action: "edit", id: flightInstance.id, params: [goHome: "1"])
+        }
+
+        if (params.goHome != null)// && params.goHome == 1)
+        {
+            return redirect(controller: "event")
         }
 
         if (session["originReferer"]) {

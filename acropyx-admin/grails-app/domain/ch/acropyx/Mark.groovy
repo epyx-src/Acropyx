@@ -33,7 +33,7 @@ class Mark {
         flight(blank: false)
         judge(blank: false)
         markDefinition(blank: false)
-        mark(blank: false, range:1..10)
+        mark(blank: false, range:0..10)
     }
 
     def static searchMark(Flight flight, Judge judge, MarkDefinition markDefinition) {

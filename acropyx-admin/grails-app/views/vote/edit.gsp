@@ -52,6 +52,10 @@
                         </g:each>  
                     </tbody>
                 </table>
+
+                <g:if test="${goHome}">
+                    <input type="hidden" id="goHome" name="goHome" value="${goHome}"/>
+                </g:if>
             </div>
             <div><g:submitButton name="Save" /></div>
             </g:form>

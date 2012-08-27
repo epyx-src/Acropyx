@@ -236,7 +236,7 @@ class EventController {
                 if ((flightInstance.marks?.size() > 0) && (flightInstance.manoeuvres?.size() > 0)) {
                     flightInstance.end()
                     displayerService.flightHasEnded(getTenantName(), flightInstance, params.displayFlightRanking)
-                    return  redirect(controller: "resultRun", id:flightInstance.run.id)
+                   // return  redirect(controller: "resultRun", id:flightInstance.run.id)
                    // def runId =  flightInstance.run.id
                    // def competitionId = flightInstance.competition.id
                    // def result = '[{"runId"	 : "John", "competitionId" : "New York"}]'
@@ -377,6 +377,11 @@ class EventController {
         else {
             flash.displayResults = "Please select a flight"
         }
+        redirect(action: "home")
+    }
+
+    def sendSponsorsToDisplay ={
+        displayerService.showSponsors(getTenantName())
         redirect(action: "home")
     }
 }
