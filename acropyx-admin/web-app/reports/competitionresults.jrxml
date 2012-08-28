@@ -103,49 +103,49 @@
 				<text><![CDATA[Glider]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="5bec14a1-a32e-4769-adf2-91714ca0b314" x="625" y="23" width="59" height="16"/>
+				<reportElement uuid="5bec14a1-a32e-4769-adf2-91714ca0b314" x="642" y="23" width="34" height="16"/>
 				<textElement verticalAlignment="Bottom">
 					<font size="12"/>
 				</textElement>
-				<text><![CDATA[Warnings]]></text>
+				<text><![CDATA[Warn]]></text>
 			</staticText>
 			<textField isBlankWhenNull="true">
-				<reportElement uuid="9e0dc93d-be0e-47f0-9efd-763b5bfcac18" x="350" y="19" width="12" height="20"/>
+				<reportElement uuid="9e0dc93d-be0e-47f0-9efd-763b5bfcac18" x="350" y="19" width="11" height="20"/>
 				<textElement textAlignment="Center" verticalAlignment="Bottom">
 					<font size="12" isBold="false"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{ACROPYX_RUN_TITLE_1}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
-				<reportElement uuid="81345002-ea64-45f4-8185-a4a8e84c7bf2" x="401" y="19" width="12" height="20"/>
+				<reportElement uuid="81345002-ea64-45f4-8185-a4a8e84c7bf2" x="401" y="19" width="11" height="20"/>
 				<textElement textAlignment="Center" verticalAlignment="Bottom">
 					<font size="12" isBold="false"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{ACROPYX_RUN_TITLE_2}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
-				<reportElement uuid="46daa698-7946-433d-85dd-db5094d91a16" x="452" y="19" width="12" height="20"/>
+				<reportElement uuid="46daa698-7946-433d-85dd-db5094d91a16" x="452" y="19" width="11" height="20"/>
 				<textElement textAlignment="Center" verticalAlignment="Bottom">
 					<font size="12" isBold="false"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{ACROPYX_RUN_TITLE_3}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
-				<reportElement uuid="d50df580-8913-466d-8e37-bd8ebce8771d" x="503" y="19" width="12" height="20"/>
+				<reportElement uuid="d50df580-8913-466d-8e37-bd8ebce8771d" x="503" y="19" width="11" height="20"/>
 				<textElement textAlignment="Center" verticalAlignment="Bottom">
 					<font size="12" isBold="false"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{ACROPYX_RUN_TITLE_4}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
-				<reportElement uuid="dca59fe0-0e83-4fc7-afad-0e913ee1fffd" x="553" y="19" width="12" height="20"/>
+				<reportElement uuid="dca59fe0-0e83-4fc7-afad-0e913ee1fffd" x="553" y="19" width="11" height="20"/>
 				<textElement textAlignment="Center" verticalAlignment="Bottom">
 					<font size="12" isBold="false"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{ACROPYX_RUN_TITLE_5}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
-				<reportElement uuid="cad9af2b-a953-4bff-a7a1-6f458a05e444" x="604" y="19" width="12" height="20"/>
+				<reportElement uuid="cad9af2b-a953-4bff-a7a1-6f458a05e444" x="604" y="19" width="11" height="20"/>
 				<textElement textAlignment="Center" verticalAlignment="Bottom">
 					<font size="12" isBold="false"/>
 				</textElement>
