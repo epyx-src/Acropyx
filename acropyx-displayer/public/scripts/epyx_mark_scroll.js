@@ -266,7 +266,6 @@ var epyxMarkTableScroll = function() {
                     context.shadowColor = "rgba(0,0,0,0.3)";
                     context.shadowBlur = 5;
                     context.drawImage(flag2,x+nb_width+12 + 350,y+ 40 + 10,rowHeight-25,rowHeight-25);
-
                     context.restore();
                 };
             }

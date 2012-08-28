@@ -424,7 +424,7 @@
                         </div>
                           <div>
                               <g:form action="sendSponsorsToDisplay">
-                                  <g:submitButton name="Send sponsors to display" />
+                                  <g:submitButton name="Competition Logo to display" />
                               </g:form>
                           </div>
                     </td>
