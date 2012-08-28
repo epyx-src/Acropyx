@@ -159,7 +159,8 @@ class ResultRunController {
 
         params.ACROPYX_COMPETITION = runInstance.competition.name
         params.ACROPYX_RUN = "Run: " + runInstance.name
-        params.ACROPYX_RESULT = (runInstance.isEnded())? "Final ranking": "Intermediate results"
+        //TODO: change text for constants
+        params.ACROPYX_RESULT = (runInstance.isEnded())? "Final overall ranking": "Intermediate overall results"
         chain(controller:'jasper',action:'index',model:[data:resultList],params:params)
     }
 

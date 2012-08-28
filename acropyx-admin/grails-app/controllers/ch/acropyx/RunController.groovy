@@ -34,7 +34,7 @@ class RunController {
 
     def list = {
         params.max = Math.min(params.max ? params.int('max') : 100, 200)
-        [runInstanceList: Run.list(params), runInstanceTotal: Run.count()]
+        [runInstanceList: Run.listOrderByCompetition(params), runInstanceTotal: Run.count()]
     }
 
     @Secured(['ROLE_ADMIN'])

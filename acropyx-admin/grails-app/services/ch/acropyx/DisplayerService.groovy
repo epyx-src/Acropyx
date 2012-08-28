@@ -329,4 +329,14 @@ class DisplayerService {
         def markString = decimalFormat.format(result)
         return markString;
     }
+
+    def void showSponsors(String tenant){
+        def name =  'Sponsors' //messageSource.getMessage( 'displayer.competition_end.title', args, Locale.default )
+        def json = '{ "name" : "' + name + '"}'
+        def resp = restClient.post( path : 'showSponsors',
+                body : json,
+                requestContentType : ContentType.JSON,
+                headers : ["Tenant": tenant] )
+    }
+
 }

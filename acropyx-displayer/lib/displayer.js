@@ -165,6 +165,7 @@ var startup = function(userOptions, callback) {
 		controllerServer.post("/resultFlightTeam", controllerHandler('ResultFlightTeam'));
 		controllerServer.post("/resultRun", controllerHandler('ResultRun'));
 		controllerServer.post("/startOrderRun", controllerHandler('StartOrderRun'));
+        controllerServer.post("/showSponsors", controllerHandler('ShowSponsors'));
 		controllerServer.post("/waiting", controllerHandler('Waiting'));
 	
 		controllerServer.post("/paf", pafHandler);

@@ -26,7 +26,8 @@ class FlightManoeuvreController {
             }
 
             session["originReferer"] = request.getHeader("Referer")
-            def model = [flightInstance: flightInstance, manoeuvres: Manoeuvre.listOrderByName()]
+            def model = [flightInstance: flightInstance, manoeuvres: Manoeuvre.listOrderByName(),
+                    goHome: params.goHome]
 
             def flightManoeuvres = [];
             flightInstance.manoeuvres?.each() { flightManoeuvre ->
@@ -53,10 +54,20 @@ class FlightManoeuvreController {
 
         flightInstance.save()
 
+        if (flightInstance.marks?.size() == 0){
+            return redirect(controller: "vote", action: "edit", id:flightInstance.id, params: [goHome:"1"])
+        }
+
+        if (params.goHome != null)// && params.goHome == 1)
+        {
+            return redirect(controller: "event")
+        }
+
         if (session["originReferer"]) {
             redirect(url: session["originReferer"])
+
         } else {
-            redirect(controller: "event")
+            redirect(controller: "event", action: "home")
         }
     }
 }
