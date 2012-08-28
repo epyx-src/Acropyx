@@ -212,7 +212,7 @@ td.tete {
     top:12px;
     right: 5px;
     right: 15px;
-    background: url(images/competition_logo.png)  top left no-repeat transparent;
+    background: url(images/competition_logo.png)  top right no-repeat transparent;
     width: 160px;
 }
 

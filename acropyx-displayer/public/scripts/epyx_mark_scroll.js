@@ -255,9 +255,9 @@ var epyxMarkTableScroll = function() {
             context.fillText(row.pilot1, x+nb_width+flag_width_sync+14+350, textLineY );
 
             if ( row.country2 ) {
-                var flag = new Image();
-                flag.src = getCountryImageSrc(row.country2);
-                flag.onload = function() {
+                var flag2 = new Image();
+                flag2.src = getCountryImageSrc(row.country2);
+                flag2.onload = function() {
                     var posX = -mark_width-60;
 
                     context.save();
@@ -265,9 +265,7 @@ var epyxMarkTableScroll = function() {
                     context.shadowOffsetY = 3;
                     context.shadowColor = "rgba(0,0,0,0.3)";
                     context.shadowBlur = 5;
-                    //context.drawImage(flag,x+w+posX+3,y+3,rowHeight-17,rowHeight-17);
-                    context.drawImage(flag,x+nb_width+12 + 350,y+ 40 + 10,rowHeight-25,rowHeight-25);
-
+                    context.drawImage(flag2,x+nb_width+12 + 350,y+ 40 + 10,rowHeight-25,rowHeight-25);
                     context.restore();
                 };
             }
