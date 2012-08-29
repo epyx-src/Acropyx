@@ -68,8 +68,8 @@
                                   <label for="Manoeuvres">Manoeuvres</label>
                                 </td>
                                 <td valign="top">
-                                    <g:link controller="flightManoeuvre" action="edit" id="${flightInstance.id}">
-                                        <g:submitButton name="Manoeuvres"></g:submitButton>
+                                    <g:link controller="flightManoeuvre" action="edit" id="${flightInstance.id}" >
+                                        <label>Change Manoeuvres</label>
                                     </g:link>
                                 </td>
                             </tr>
@@ -80,7 +80,7 @@
                                 </td>
                                 <td valign="top">
                                     <g:link controller="vote" action="edit" id="${flightInstance.id}">
-                                        <g:submitButton name="Vote"></g:submitButton>
+                                        <label>Change Votes</label>
                                     </g:link>
                                 </td>
                             </tr>
