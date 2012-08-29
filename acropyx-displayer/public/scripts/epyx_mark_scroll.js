@@ -11,6 +11,8 @@ var epyxMarkTableScroll = function() {
 
 	var rowHeight = 70;
 	var fontStyle = "bold 26pt arial,sans-serif";
+    var fontPilotSyncStyle = "bold 24pt arial,sans-serif";
+
 
 	var jsonContent;
 	
@@ -188,7 +190,7 @@ var epyxMarkTableScroll = function() {
 		context.fillStyle = my_gradient;
 	    	var endCompetitorGradientX = w-mark_width-80;
 			
-		roundRect(context, x+nb_width+10, y+5, endCompetitorGradientX, 40, 20, true, false);
+		roundRect(context, x+nb_width+10, y+5 , endCompetitorGradientX, 40, 20, true, false);
 		
 		context.fillStyle = "#333";
 		context.textAlign = "left";
@@ -242,7 +244,7 @@ var epyxMarkTableScroll = function() {
                     context.shadowColor = "rgba(0,0,0,0.3)";
                     context.shadowBlur = 5;
                     //context.drawImage(flag,x+w+posX+3,y+3,rowHeight-17,rowHeight-17);
-                    context.drawImage(flag,x+nb_width+12 +350,y +6,rowHeight-25,rowHeight-25);
+                    context.drawImage(flag,x+nb_width+12 +330,y +6,rowHeight-25,rowHeight-25);
 
                     context.restore();
                 };
@@ -250,9 +252,9 @@ var epyxMarkTableScroll = function() {
 
             context.fillStyle = "#333";
             context.textAlign = "left";
-            context.font = fontStyle;
+            context.font = fontPilotSyncStyle;
 
-            context.fillText(row.pilot1, x+nb_width+flag_width_sync+14+350, textLineY );
+            context.fillText(row.pilot1, x+nb_width+flag_width_sync+330, textLineY -2 );
 
             if ( row.country2 ) {
                 var flag2 = new Image();
@@ -265,12 +267,12 @@ var epyxMarkTableScroll = function() {
                     context.shadowOffsetY = 3;
                     context.shadowColor = "rgba(0,0,0,0.3)";
                     context.shadowBlur = 5;
-                    context.drawImage(flag2,x+nb_width+12 + 350,y+ 40 + 10,rowHeight-25,rowHeight-25);
+                    context.drawImage(flag2,x+nb_width+12 + 330,y+ 40 + 10,rowHeight-25,rowHeight-25);
                     context.restore();
                 };
             }
 
-            context.fillText(row.pilot2, x+nb_width+flag_width_sync+14 + 350, textLineY + 40);
+            context.fillText(row.pilot2, x+nb_width+flag_width_sync + 330, textLineY -2 + 40);
         }
 
 

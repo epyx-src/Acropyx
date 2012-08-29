@@ -28,8 +28,10 @@ class FlightController {
 
     def list = {
         params.max = Math.min(params.max ? params.int('max') : 100, 200)
+        params.order = 'desc'
 
-        def flightList =  Flight.list(params)
+
+        def flightList =  Flight.listOrderByStartTime(params)
 
         [flightInstanceList: flightList, flightInstanceTotal: Flight.count()]
     }

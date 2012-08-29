@@ -138,7 +138,7 @@ class DisplayerService {
 
     def void resultRun(String tenant, Run run) {
         if (run) {
-            def msgKey = (run.endTime ? 'displayer.result.final.text' : 'displayer.result.intermediate.text')
+            def msgKey = (run.endTime ? 'displayer.result.run.final.text' : 'displayer.result.run.intermediate.text')
             def subTitle = messageSource.getMessage( msgKey, []as Object[], Locale.default )
             Object[] args = [
                 run.competition.name,
@@ -156,7 +156,7 @@ class DisplayerService {
 
     def void resultCompetition(String tenant, Competition competition) {
         if (competition) {
-            def msgKey = (competition.endTime ? 'displayer.result.final.text' : 'displayer.result.intermediate.text')
+            def msgKey = (competition.endTime ? 'displayer.result.competition.final.text' : 'displayer.result.competition.intermediate.text')
             def subTitle = messageSource.getMessage( msgKey, []as Object[], Locale.default )
             Object[] args = [competition.name, subTitle]
             def name = messageSource.getMessage( 'displayer.competition_end.title', args, Locale.default )
